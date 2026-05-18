@@ -10,7 +10,6 @@ import { TakeawayPay } from './pages/takeaway/takeaway-pay/takeaway-pay';
 import { TakeawayTack } from './pages/takeaway/takeaway-tack/takeaway-tack';
 
 export const routes: Routes = [
-
     { path: '', component: Home },
 
     { path: 'boka-bord', component: BokaBordInfo },
@@ -20,5 +19,4 @@ export const routes: Routes = [
     { path: 'takeaway', component: Order },
     { path: 'takeaway/pay', component: TakeawayPay },
     { path: 'takeaway/tack', component: TakeawayTack }
-
 ];
