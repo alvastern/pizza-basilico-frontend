@@ -1,7 +1,6 @@
 <section>
     <h2>Välkommen till Pizza Basilico</h2>
-
-    <p></p>
+    <p>{{ homeText }}</p>
 
     <article>
         <button routerLink="/boka-bord">Boka bord</button>
@@ -10,7 +9,7 @@
 </section>
 
 <section>
-    <h3>Vår meny</h3>
+    <h2>Vår meny</h2>
     <article>
         <div *ngFor="let pizza of pizzas">
             <article>
@@ -20,6 +19,26 @@
             </article>
 
             <img [src]="'/images/meny/' + pizza.image">
+        </div>
+    </article>
+</section>
+
+<section>
+    <h2>Om oss</h2>
+    <p>{{ aboutText }}</p>
+
+    <article>
+        <h3>Öppentider</h3>
+
+        <div *ngFor="let day of openingHours">
+            <p *ngIf="!day.is_closed">
+                {{ day.weekday }}:
+                {{ day.open_time }} - {{ day.close_time }}
+            </p>
+
+            <p *ngIf="day.is_closed">
+                {{ day.weekday }}: Stängt
+            </p>
         </div>
     </article>
 </section>

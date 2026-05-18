@@ -15,6 +15,10 @@ import { RouterLink } from '@angular/router';
 export class Home implements OnInit {
 
   pizzas: any[] = [];
+  openingHours: any[] = [];
+
+  aboutText: string = "";
+  homeText: string = "";
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
@@ -25,6 +29,29 @@ export class Home implements OnInit {
 
         this.pizzas = data;
         this.cdr.detectChanges();
+
+      });
+
+    this.http.get<any[]>("http://localhost:3000/information")
+      .subscribe(data => {
+
+        const aboutPage = data.find(
+          page => page.slug === "about"
+        );
+
+        const homePage = data.find(
+          page => page.slug === "homepage"
+        );
+
+        this.aboutText = aboutPage.content;
+        this.homeText = homePage.content;
+
+      });
+
+    this.http.get<any[]>("http://localhost:3000/opening-hours")
+      .subscribe(data => {
+
+        this.openingHours = data;
 
       });
   }
