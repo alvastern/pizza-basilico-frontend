@@ -45,6 +45,7 @@ export class Home implements OnInit {
 
         this.aboutText = aboutPage.content;
         this.homeText = homePage.content;
+        this.cdr.detectChanges();
 
       });
 
@@ -52,6 +53,7 @@ export class Home implements OnInit {
       .subscribe(data => {
 
         this.openingHours = data;
+        this.cdr.detectChanges();
 
       });
   }
