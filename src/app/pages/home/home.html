@@ -1,1 +1,25 @@
-<p>home works!</p>
+<section>
+    <h2>Välkommen till Pizza Basilico</h2>
+
+    <p></p>
+
+    <article>
+        <button routerLink="/boka-bord">Boka bord</button>
+        <button routerLink="/takeaway">Takeaway</button>
+    </article>
+</section>
+
+<section>
+    <h3>Vår meny</h3>
+    <article>
+        <div *ngFor="let pizza of pizzas">
+            <article>
+                <h2>{{ pizza.title }}</h2>
+                <p>{{ pizza.description }}</p>
+                <span>{{ pizza.price }} kr</span>
+            </article>
+
+            <img [src]="'/images/meny/' + pizza.image">
+        </div>
+    </article>
+</section>
