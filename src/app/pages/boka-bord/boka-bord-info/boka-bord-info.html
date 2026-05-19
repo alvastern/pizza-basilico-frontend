@@ -1,1 +1,44 @@
-<p>boka-bord-info works!</p>
+<section>
+    <h2>Boka bord</h2>
+
+    <form>
+        <div>
+            <label for="weekday">Vilken dag vill du boka?</label>
+            <select id="weekday">
+                <option>Onsdag</option>
+                <option>Torsdag</option>
+                <option>Fredag</option>
+                <option>Lördag</option>
+                <option>Söndag</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">Hur många är ni?</label>
+            <select id="guests">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="time">Vilken tid vill ni äta?</label>
+            <select id="time">
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+            </select>
+        </div>
+    </form>
+
+    <article>
+        <button routerLink="/boka-bord/kontakt">Fortsätt</button>
+        <button routerLink="/">Avbryt</button>
+    </article>
+</section>
