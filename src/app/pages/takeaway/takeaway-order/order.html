@@ -1,1 +1,78 @@
-<p>order works!</p>
+<section>
+    <h2>Beställ takeaway</h2>
+
+    <form>
+        <div>
+            <label for="namn">För- och efternamn: </label>
+            <input type="text" id="namn">
+        </div>
+
+        <div>
+            <label for="e-post">E-postadress: </label>
+            <input type="text" id="e-post">
+        </div>
+
+        <div>
+            <label for="nummer">Telefonnummer: </label>
+            <input type="text" id="nummer">
+        </div>
+
+        <div>
+            <label for="time">Tid för avhämtning: </label>
+            <select id="time">
+                <option>17:00</option>
+                <option>17:15</option>
+                <option>17:30</option>
+                <option>17:45</option>
+                <option>18:00</option>
+                <option>18:15</option>
+                <option>18:30</option>
+                <option>18:45</option>
+                <option>19:00</option>
+                <option>19:15</option>
+                <option>19:30</option>
+                <option>19:45</option>
+                <option>20:00</option>
+                <option>20:15</option>
+                <option>20:30</option>
+                <option>20:45</option>
+                <option>21:00</option>
+            </select>
+        </div>
+    </form>
+</section>
+
+<section>
+    <div *ngFor="let pizza of pizzas">
+        <article>
+            <h2>{{ pizza.title }}</h2>
+            <p>{{ pizza.description }}</p>
+            <span>{{ pizza.price }} kr</span>
+            <button (click)="addToCart(pizza)">Lägg till</button>
+        </article>
+
+        <img [src]="'/images/meny/' + pizza.image">
+    </div>
+
+    <article>
+        <h3>Din varukorg</h3>
+        <div *ngFor="let pizza of cart">
+
+    <p>
+        {{ pizza.title }}
+        x{{ pizza.quantity }}
+    </p>
+
+    <button (click)="decreaseQuantity(pizza)">
+        -
+    </button>
+
+    <button (click)="increaseQuantity(pizza)">
+        +
+    </button>
+
+</div>
+        <p>Totalt: {{ getTotal() }} kr</p>
+        <button routerLink="/takeaway/pay">Till betalning</button>
+    </article>
+</section>
