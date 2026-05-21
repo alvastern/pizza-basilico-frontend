@@ -1,0 +1,141 @@
+// Introduktion & Hero - sektion
+#introduktion {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
+    url('/images/hero.jpg');
+
+    background-size: cover;
+    background-position: center;
+    color: white;
+    width: 98.8vw;
+    height: 100vh;
+}
+
+#intro-rubrik {
+    font-size: 4rem;
+    margin: 3vh 0 0 5vw;
+    width: 35rem;
+    font-weight: 850;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.paragraf {
+    margin: 5vh 5vw;
+    width: 55ch;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+#knappar-startsida {
+    margin: 10vh 5vw;
+}
+
+.knapp-startsida {
+    background-color: white;
+    border: none;
+    padding: 20px 30px;
+    border-radius: 5rem;
+    margin-right: 2.5rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+// Meny - sektion
+#meny-rubrik {
+    font-size: 2.5rem;
+    font-weight: 850;
+    text-align: center;
+    margin-top: 7.5vh;
+}
+
+.meny-kort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    background:
+    linear-gradient(
+        to right,
+        rgb(0, 0, 0) 0%,
+        rgb(120, 0, 0) 100%
+    );
+}
+
+.meny-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.meny-info h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+}
+
+.meny-info p {
+    font-size: 0.8rem;
+    margin: 0.35rem 0;
+}
+
+.meny-info span {
+    font-size: 0.9rem;
+}
+
+.meny-image {
+    width: 5.5rem;
+    height: auto;
+    margin-left: 1rem;
+    object-fit: cover;
+    border-radius: 0 1rem 0 1rem;
+}
+
+#meny-sektion {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+// Om oss - sektionen
+#about-sektion {
+    margin: 10vh 0 0 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5vh 5vw;
+    background: linear-gradient(
+        to right,
+        rgb(0, 0, 0) 0%,
+        rgb(120, 0, 0) 100%
+    );
+}
+
+#vedugn-image {
+    border-radius: 0 2rem 0 2rem;
+    width: 40vw;
+    height: auto;
+}
+
+#about-sektion h2 {
+    font-size: 3.5rem;
+    font-weight: 850;
+}
+
+.paragraf-about {
+    width: 55ch;
+    line-height: 1.5;
+}
+
+#rubrik-öppentider {
+    font-size: 2rem;
+    margin-top: 7.5vh;
+    font-weight: 700;
+}
+
+#sektion-öppentider {
+    margin-bottom: 10vh;
+}

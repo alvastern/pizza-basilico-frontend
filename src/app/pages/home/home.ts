@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Header } from "../../components/header/header";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Header],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

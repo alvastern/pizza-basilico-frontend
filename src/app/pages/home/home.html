@@ -1,44 +1,59 @@
-<section>
-    <h2>Välkommen till Pizza Basilico</h2>
-    <p>{{ homeText }}</p>
+<section id="introduktion">
 
-    <article>
-        <button routerLink="/boka-bord">Boka bord</button>
-        <button routerLink="/takeaway">Takeaway</button>
-    </article>
+    <app-header></app-header>
+
+    <div class="intro-content">
+        <h2 id="intro-rubrik">Välkommen till Pizza Basilico</h2>
+        <p class="paragraf">{{ homeText }}</p>
+
+        <article id="knappar-startsida">
+            <button routerLink="/boka-bord" class="knapp-startsida">Boka bord</button>
+            <button routerLink="/takeaway" class="knapp-startsida">Takeaway</button>
+        </article>
+    </div>
+
 </section>
 
 <section>
-    <h2>Vår meny</h2>
-    <article>
-        <div *ngFor="let pizza of pizzas">
-            <article>
+    <h2 id="meny-rubrik">Vår meny</h2>
+
+    <article id="meny-sektion">
+        <div *ngFor="let pizza of pizzas" class="meny-kort">
+            <article class="meny-info">
                 <h2>{{ pizza.title }}</h2>
                 <p>{{ pizza.description }}</p>
                 <span>{{ pizza.price }} kr</span>
             </article>
 
-            <img [src]="'/images/meny/' + pizza.image">
+            <img [src]="'/images/meny/' + pizza.image" class="meny-image">
         </div>
     </article>
 </section>
 
-<section>
-    <h2>Om oss</h2>
-    <p>{{ aboutText }}</p>
+<section id="about-sektion">
+    <div>
+        <h2>Om oss</h2>
+        <p class="paragraf-about">{{ aboutText }}</p>
 
-    <article>
-        <h3>Öppentider</h3>
+        <article id="sektion-öppentider">
+            <h3 id="rubrik-öppentider">Öppentider</h3>
 
-        <div *ngFor="let day of openingHours">
-            <p *ngIf="!day.is_closed">
-                {{ day.weekday }}:
-                {{ day.open_time }} - {{ day.close_time }}
-            </p>
+            <div *ngFor="let day of openingHours">
+                <p *ngIf="!day.is_closed">
+                    {{ day.weekday }}:
+                    {{ day.open_time }} - {{ day.close_time }}
+                </p>
 
-            <p *ngIf="day.is_closed">
-                {{ day.weekday }}: Stängt
-            </p>
-        </div>
-    </article>
+                <p *ngIf="day.is_closed">
+                    {{ day.weekday }}: Stängt
+                </p>
+            </div>
+        </article>
+    </div>
+
+    <picture>
+        <source srcset="images/vedugn.webp" type="image/webp">
+        <source srcset="images/vedugn.jpg" type="image/jpg">
+        <img src="images/vedugn.jpg" alt="En pizza som ligger framför en vedugn" id="vedugn-image">
+    </picture>
 </section>
