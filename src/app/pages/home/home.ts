@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Header } from "../../components/header/header";
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import { Header } from "../../components/header/header";
   styleUrl: './home.scss',
 })
 
-export class Home implements OnInit {
+export class Home implements OnInit, AfterViewInit {
 
   pizzas: any[] = [];
   openingHours: any[] = [];
@@ -57,5 +58,27 @@ export class Home implements OnInit {
         this.cdr.detectChanges();
 
       });
+  }
+
+  ngAfterViewInit() {
+    const elements = document.querySelectorAll('.scroll-fade');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if(entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      },
+      {
+        threshold: 0.2
+      }
+    );
+
+    elements.forEach(element => {
+      observer.observe(element);
+    });
   }
 }

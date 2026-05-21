@@ -1,8 +1,7 @@
 <section id="introduktion">
-
     <app-header></app-header>
 
-    <div class="intro-content">
+    <div class="intro-content" class="fade-up">
         <h2 id="intro-rubrik">Välkommen till Pizza Basilico</h2>
         <p class="paragraf">{{ homeText }}</p>
 
@@ -11,13 +10,12 @@
             <button routerLink="/takeaway" class="knapp-startsida">Takeaway</button>
         </article>
     </div>
-
 </section>
 
 <section>
     <h2 id="meny-rubrik">Vår meny</h2>
 
-    <article id="meny-sektion">
+    <article id="meny-sektion" class="scroll-fade">
         <div *ngFor="let pizza of pizzas" class="meny-kort">
             <article class="meny-info">
                 <h2>{{ pizza.title }}</h2>
@@ -31,7 +29,7 @@
 </section>
 
 <section id="about-sektion">
-    <div>
+    <div class="scroll-fade">
         <h2>Om oss</h2>
         <p class="paragraf-about">{{ aboutText }}</p>
 
@@ -51,7 +49,7 @@
         </article>
     </div>
 
-    <picture>
+    <picture class="scroll-fade">
         <source srcset="images/vedugn.webp" type="image/webp">
         <source srcset="images/vedugn.jpg" type="image/jpg">
         <img src="images/vedugn.jpg" alt="En pizza som ligger framför en vedugn" id="vedugn-image">

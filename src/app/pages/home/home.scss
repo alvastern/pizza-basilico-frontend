@@ -38,6 +38,11 @@
     font-weight: 700;
     font-size: 1.25rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.knapp-startsida:hover {
+    background-color: grey;
 }
 
 // Meny - sektion
@@ -126,7 +131,8 @@
 }
 
 .paragraf-about {
-    width: 55ch;
+    width: 40vw;
+    max-width: 550px;
     line-height: 1.5;
 }
 
@@ -138,4 +144,31 @@
 
 #sektion-öppentider {
     margin-bottom: 10vh;
+}
+
+// Animationer
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scroll-fade.show {
+    opacity: 1;
+    transform: translateY(0);
 }
