@@ -9,6 +9,10 @@ import { Order } from './pages/takeaway/takeaway-order/order';
 import { TakeawayPay } from './pages/takeaway/takeaway-pay/takeaway-pay';
 import { TakeawayTack } from './pages/takeaway/takeaway-tack/takeaway-tack';
 
+import { Login } from './pages/admin/login/login';
+import { Register } from './pages/admin/register/register';
+import { Dashboard } from './pages/admin/dashboard/dashboard';
+
 export const routes: Routes = [
     { path: '', component: Home },
 
@@ -18,5 +22,9 @@ export const routes: Routes = [
 
     { path: 'takeaway', component: Order },
     { path: 'takeaway/pay', component: TakeawayPay },
-    { path: 'takeaway/tack', component: TakeawayTack }
+    { path: 'takeaway/tack', component: TakeawayTack },
+
+    { path: 'admin/login', component: Login },
+    { path: 'admin/register', component: Register },
+    { path: 'admin/dashboard', component: Dashboard }
 ];
