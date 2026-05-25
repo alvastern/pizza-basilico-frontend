@@ -21,14 +21,15 @@
 }
 
 #tillbaka-knapp {
-    margin: 5vh 0 0 5vw;
-    padding: 1rem 2rem;
-    border-radius: 3rem;
-    font-size: 1.25rem;
-    font-weight: 700;
+    margin: 5vh 0 5vh 5vw;
+    font-size: 1.15rem;
     border: none;
+    padding: 2vh 2vw;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 3rem;
+    font-weight: 700;
     cursor: pointer;
+    width: 20ch;
 }
 #tillbaka-knapp:hover {
     background-color: gray;
@@ -73,6 +74,8 @@
     }
 
     #tillbaka-knapp {
-        width: 20ch;
+        width: 15ch;
+        min-width: 220px;
+        margin: 7.5vh 0 0 5vw;
     }
 }

@@ -2,7 +2,7 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
     url(/images/pizza-box.jpg);
 
-    height: 77.5vh;
+    height: 100vh;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
@@ -20,16 +20,22 @@ form {
 
 .input {
     margin: 4vh 0 4vh 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
 }
 
 input {
     border-radius: 2rem;
     padding: 1vh 1.5vw;
     border: none;
+    width: 35ch;
+    max-width: 350px;
 }
 
 select {
     padding: 1vh;
+    width: 25ch;
 }
 
 // Meny + varukorg
@@ -167,4 +173,61 @@ select {
 .scroll-fade.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    #takeaway-order {
+        background-position: center;
+    }
+
+    #takeaway-order h2 {
+        font-size: 2.5rem;
+        width: 80%;
+        margin: 0 0 5vh 5vw;
+    }
+
+    .input {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    input {
+        width: 80%;
+        max-width: 350px;
+        padding: 1.25vh 1.5vw;
+    }
+
+    select {
+        width: 20ch;
+        max-width: 350px;
+        padding: 1.25vh 1.5vw;
+    }
+
+    #sektion-order {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    #meny-sektion {
+        grid-template-columns: 1fr;
+        margin: 5vh 5vw 0 5vw;
+    }
+
+    #varukorg {
+        width: 80%;
+        margin: 0 5vw;
+        padding: 2vh 5vw 5vh 5vw;
+    }
+
+    #pay-knapp {
+        padding: 2vh 2vw;
+        font-size: 1.25rem;
+        margin-top: 5vh;
+    }
+
+    #add-button {
+        width: 40%;
+        min-width: 120px;
+    }
 }

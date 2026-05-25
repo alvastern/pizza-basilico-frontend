@@ -21,6 +21,7 @@
 
 #takeaway-tack button {
     margin: 5vh 0 5vh 5vw;
+    font-size: 1.15rem;
     border: none;
     padding: 2vh 2vw;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
@@ -58,4 +59,30 @@
 .scroll-fade.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    #takeaway-tack {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 10vh;
+        background-position: center;
+    }
+
+    #takeaway-tack h2 {
+        font-size: 3rem;
+        width: 80%;
+        margin: 2.5vh 0 0 5vw;
+    }
+
+    #takeaway-tack p {
+        width: 80%;
+    }
+
+    #takeaway-tack button {
+        width: 25ch;
+        min-width: 220px;
+        padding: 2.5vh 2vw;
+        margin: 7.5vh 0 0 5vw;
+    }
 }
