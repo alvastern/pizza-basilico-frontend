@@ -2,11 +2,12 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Header } from "../../../components/header/header";
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Header],
   templateUrl: './order.html',
   styleUrl: './order.scss',
 })
@@ -84,5 +85,27 @@ export class Order implements OnInit {
       (total, pizza) =>
         total + (pizza.price * pizza.quantity), 0
     );
+  }
+
+  ngAfterViewInit() {
+    const elements = document.querySelectorAll('.scroll-fade');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if(entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      },
+      {
+        threshold: 0.2
+      }
+    );
+
+    elements.forEach(element => {
+      observer.observe(element);
+    });
   }
 }

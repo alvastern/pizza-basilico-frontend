@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Header } from "../../../components/header/header";
 
 @Component({
   selector: 'app-takeaway-pay',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, Header],
   templateUrl: './takeaway-pay.html',
   styleUrl: './takeaway-pay.scss',
 })

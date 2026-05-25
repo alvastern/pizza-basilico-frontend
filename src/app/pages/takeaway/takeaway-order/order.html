@@ -1,23 +1,25 @@
-<section>
-    <h2>Beställ takeaway</h2>
+<section id="takeaway-order">
+    <app-header></app-header>
 
-    <form>
-        <div>
+    <h2 class="fade-up">Beställ takeaway</h2>
+
+    <form class="fade-up">
+        <div class="input">
             <label for="namn">För- och efternamn: </label>
             <input type="text" id="namn">
         </div>
 
-        <div>
+        <div class="input">
             <label for="e-post">E-postadress: </label>
             <input type="text" id="e-post">
         </div>
 
-        <div>
+        <div class="input">
             <label for="nummer">Telefonnummer: </label>
             <input type="text" id="nummer">
         </div>
 
-        <div>
+        <div class="input">
             <label for="time">Tid för avhämtning: </label>
             <select id="time">
                 <option>17:00</option>
@@ -42,37 +44,35 @@
     </form>
 </section>
 
-<section>
-    <div *ngFor="let pizza of pizzas">
-        <article>
-            <h2>{{ pizza.title }}</h2>
-            <p>{{ pizza.description }}</p>
-            <span>{{ pizza.price }} kr</span>
-            <button (click)="addToCart(pizza)">Lägg till</button>
-        </article>
+<section id="sektion-order" class="scroll-fade">
+    <article id="meny-sektion">
+        <div *ngFor="let pizza of pizzas" id="meny-kort">
+            <article id="meny-info">
+                <h2>{{ pizza.title }}</h2>
+                <p>{{ pizza.description }}</p>
+                <span>{{ pizza.price }} kr</span>
+                <button (click)="addToCart(pizza)" id="add-button">Lägg till</button>
+            </article>
 
-        <img [src]="'/images/meny/' + pizza.image">
-    </div>
+            <img [src]="'/images/meny/' + pizza.image" id="meny-img">
+        </div>
+    </article>
 
-    <article>
+    <article id="varukorg">
         <h3>Din varukorg</h3>
-        <div *ngFor="let pizza of cart">
 
-    <p>
-        {{ pizza.title }}
-        x{{ pizza.quantity }}
-    </p>
+        <div *ngFor="let pizza of cart" id="items-varukorg">
+            <p id="linje-varukorg">
+                {{ pizza.title }}
+                x{{ pizza.quantity }}
+            </p>
 
-    <button (click)="decreaseQuantity(pizza)">
-        -
-    </button>
+            <button (click)="decreaseQuantity(pizza)" class="antal-knapp">-</button>
+            <button (click)="increaseQuantity(pizza)" class="antal-knapp">+</button>
+        </div>
 
-    <button (click)="increaseQuantity(pizza)">
-        +
-    </button>
-
-</div>
         <p>Totalt: {{ getTotal() }} kr</p>
-        <button routerLink="/takeaway/pay">Till betalning</button>
+
+        <button routerLink="/takeaway/pay" id="pay-knapp">Till betalning</button>
     </article>
 </section>
