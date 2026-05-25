@@ -1,0 +1,61 @@
+#bord-tack-sektion {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
+    url(/images/tables.jpg);
+
+    height: 100vh;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#rubrik-tack {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0 0 0 5vw;
+    width: 35vw;
+}
+
+#paragraf {
+    margin: 5vh 0 0 5vw;
+}
+
+#tillbaka-knapp {
+    margin: 10vh 0 0 5vw;
+    padding: 3vh 3vw;
+    border-radius: 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+#tillbaka-knapp:hover {
+    background-color: gray;
+}
+
+// Animationer
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scroll-fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}

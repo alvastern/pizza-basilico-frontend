@@ -1,11 +1,14 @@
 <header>
     <h1>Pizza Basilico</h1>
 
-    <nav>
+    <button id="menu-button" (click)="toggleMenu()">☰</button>
+
+    <nav [class.open]="menuOpen">
         <ul>
-            <li routerLinkActive="active-link"><a routerLink="/">Hem</a></li>
+            <li routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Hem</a></li>
             <li routerLinkActive="active-link"><a routerLink="/boka-bord">Boka bord</a></li>
             <li routerLinkActive="active-link"><a routerLink="/takeaway">Takeaway</a></li>
         </ul>
+
     </nav>
 </header>

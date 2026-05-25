@@ -1,0 +1,78 @@
+#sektion-boka-bord {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
+    url(/images/tables.jpg);
+
+    height: 77.5vh;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#sektion-boka-bord h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 5vh 5vw;
+}
+
+form {
+    margin: 0 0 10vh 5vw;
+
+    div {
+        margin-bottom: 4vh;
+
+        input {
+            border: none;
+            border-radius: 2rem;
+            padding: 1vh 1vw;
+        }
+    }
+}
+
+#knapp-boka-bord {
+    padding: 2vh 2vw;
+    border-radius: 3rem;
+    border: none;
+    font-weight: 700;
+    margin: 0 0 0 5vw;
+    cursor: pointer;
+}
+
+#knapp-tillbaka {
+    padding: 1.5vh 1.5vw;
+    border-radius: 2rem;
+    border: none;
+    font-weight: 700;
+    margin: 0 0 0 5vw;
+    cursor: pointer;
+}
+
+#knapp-boka-bord:hover, #knapp-tillbaka:hover {
+    background-color: gray;
+}
+
+// Animationer
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scroll-fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,25 +1,30 @@
 <section>
-    <h2>Boka bord</h2>
+    <div id="sektion-boka-bord">
+        <app-header></app-header>
+        <div class="fade-up">
+            <h2>Boka bord</h2>
 
-    <form>
-        <div>
-            <label for="namn">För- och efternamn: </label>
-            <input type="text" id="namn">
+            <form>
+                <div>
+                    <label for="namn">För- och efternamn: </label>
+                    <input type="text" id="namn">
+                </div>
+
+                <div>
+                    <label for="e-post">E-postadress: </label>
+                    <input type="text" id="e-post">
+                </div>
+
+                <div>
+                    <label for="nummer">Telefonnummer: </label>
+                    <input type="text" id="nummer">
+                </div>
+            </form>
+
+            <article>
+                <button routerLink="/boka-bord/tack" id="knapp-boka-bord">Boka bord</button>
+                <button routerLink="/boka-bord" id="knapp-tillbaka">Tillbaka</button>
+            </article>
         </div>
-
-        <div>
-            <label for="e-post">E-postadress: </label>
-            <input type="text" id="e-post">
-        </div>
-
-        <div>
-            <label for="nummer">Telefonnummer: </label>
-            <input type="text" id="nummer">
-        </div>
-    </form>
-
-    <article>
-        <button routerLink="/boka-bord/tack">Boka bord</button>
-        <button routerLink="/boka-bord">Tillbaka</button>
-    </article>
+    </div>
 </section>
