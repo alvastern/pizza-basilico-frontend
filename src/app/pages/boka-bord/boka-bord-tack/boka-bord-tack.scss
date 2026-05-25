@@ -16,14 +16,15 @@
 }
 
 #paragraf {
-    margin: 5vh 0 0 5vw;
+    margin: 5vh 5vw 0 5vw;
+    font-size: 1.25rem;
 }
 
 #tillbaka-knapp {
-    margin: 10vh 0 0 5vw;
-    padding: 3vh 3vw;
+    margin: 5vh 0 0 5vw;
+    padding: 1rem 2rem;
     border-radius: 3rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 700;
     border: none;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
@@ -58,4 +59,20 @@
 .scroll-fade.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    #rubrik-tack {
+        font-size: 3rem;
+        width: 80%;
+        margin: 0 0 0 5vw;
+    }
+
+    #paragraf {
+        margin: 5vh 0 0 5vw;
+    }
+
+    #tillbaka-knapp {
+        width: 20ch;
+    }
 }

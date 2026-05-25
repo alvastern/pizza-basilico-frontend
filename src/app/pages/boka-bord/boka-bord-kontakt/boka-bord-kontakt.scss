@@ -2,7 +2,7 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
     url(/images/tables.jpg);
 
-    height: 77.5vh;
+    height: 100vh;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,31 +19,37 @@ form {
 
     div {
         margin-bottom: 4vh;
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
 
         input {
             border: none;
-            border-radius: 2rem;
             padding: 1vh 1vw;
+            width: 30ch;
         }
     }
 }
 
 #knapp-boka-bord {
-    padding: 2vh 2vw;
+    padding: 1rem 2rem;
     border-radius: 3rem;
-    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
     font-weight: 700;
-    margin: 0 0 0 5vw;
+    font-size: 1.25rem;
+    border: none;
+    margin: 0 5ch 0 5vw;
     cursor: pointer;
+    width: 20ch;
 }
 
 #knapp-tillbaka {
     padding: 1.5vh 1.5vw;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     border: none;
     font-weight: 700;
-    margin: 0 0 0 5vw;
     cursor: pointer;
+    width: 15ch;
 }
 
 #knapp-boka-bord:hover, #knapp-tillbaka:hover {
@@ -75,4 +81,53 @@ form {
 .scroll-fade.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    #sektion-boka-bord {
+        height: auto;
+        padding-bottom: 7.5vh;
+        background-position: center;
+    }
+
+    #sektion-boka-bord h2 {
+        font-size: 2.5rem;
+        width: 80%;
+        margin: 0 0 5vh 5vw;
+    }
+
+    form div label {
+        font-size: 1rem;
+    }
+
+    form div input {
+        width: 80%;
+        max-width: 350px;
+        padding: 1vh 1vw;
+    }
+
+    #knapp-sektion {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin: 0 5vw;
+    }
+
+    #knapp-boka-bord {
+        width: 20ch;
+        padding: 2vh 2vw;
+        margin: 0;
+    }
+
+    #knapp-tillbaka {
+        width: 15ch;
+        padding: 1.5vh 1.5vw;
+    }
+
+    #knappar-boka {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 5vw;
+        gap: 4ch;
+    }
 }

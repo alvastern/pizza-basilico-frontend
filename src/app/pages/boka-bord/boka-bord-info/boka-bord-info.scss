@@ -2,7 +2,7 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
     url(/images/tables.jpg);
 
-    height: 77.5vh;
+    height: 100vh;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,23 +18,28 @@ form {
     margin: 5vh 0 10vh 5vw;
 
     div {
-        margin-bottom: 4vh;
+        margin-bottom: 3vh;
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
 
         select {
-            padding: 0.5vh 0.5vw;
+            padding: 1vh 0.5vw;
+            width: 40ch;
         }
     }
 }
 
 #knapp-fortsatt {
-    padding: 2vh 2vw;
+    padding: 1rem 2rem;
     border-radius: 3rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.25rem;
     border: none;
-    margin: 0 5vw 0 5vw;
+    margin: 0 5ch 0 5vw;
     cursor: pointer;
+    width: 20ch;
 }
 
 #knapp-avbryt {
@@ -43,6 +48,7 @@ form {
     border: none;
     font-weight: 700;
     cursor: pointer;
+    width: 15ch;
 }
 
 #knapp-fortsatt:hover, #knapp-avbryt:hover {
@@ -74,4 +80,52 @@ form {
 .scroll-fade.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    #boka-bord-sektion {
+        height: auto;
+        padding-bottom: 7.5vh;
+        background-position: center;
+    }
+
+    #boka-bord-sektion h2 {
+        font-size: 2.5rem;
+        width: 80%;
+        margin: 0 0 0 5vw;
+    }
+
+    form div label {
+        font-size: 1rem;
+    }
+
+    form div select {
+        width: 50%;
+        padding: 1vh 1vw;
+    }
+
+    #knapp-sektion {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin: 0 5vw;
+    }
+
+    #knapp-fortsatt {
+        width: 20ch;
+        padding: 2vh 2vw;
+        margin: 0;
+    }
+
+    #knapp-avbryt {
+        width: 15ch;
+        padding: 1.5vh 1.5vw;
+    }
+
+    #knappar-boka {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 5vw;
+        gap: 4ch;
+    }
 }
