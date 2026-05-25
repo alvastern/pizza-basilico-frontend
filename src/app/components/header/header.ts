@@ -8,8 +8,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-toggleMenu() {
-throw new Error('Method not implemented.');
-}
-menuOpen: any;
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
