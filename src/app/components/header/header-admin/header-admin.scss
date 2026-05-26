@@ -1,0 +1,17 @@
+#ikon {
+    width: 5rem;
+    height: auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5vh 5vw;
+    color: white;
+
+    p {
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+}

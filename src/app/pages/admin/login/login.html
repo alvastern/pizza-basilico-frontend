@@ -1,1 +1,23 @@
-<p>login works!</p>
+<section id="login-wrapper">
+    <app-header-admin></app-header-admin>
+
+    <article id="login-card">
+        <h1>Logga in</h1>
+
+        <form>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Användarnamn">
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Lösenord">
+                <a href="#" id="forgot-password">Glömt lösenord?</a>
+            </div>
+
+            <button type="submit" id="login-button">Logga in</button>
+        </form>
+
+        <p id="register-text">Jobbar du på Pizza Basilico och inte har något 
+            arbetskonto?<a routerLink="/admin/register">Registrera ett här.</a></p>
+    </article>
+</section>
