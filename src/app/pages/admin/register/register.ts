@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HeaderAdmin } from "../../../components/header/header-admin/header-admin";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,10 @@ export class Register {
   confirmPassword = '';
   errorMessage = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   registerUser() {
     if(
@@ -59,9 +63,19 @@ export class Register {
     this.http.post(
       'http://localhost:3000/register',
       userData
-    ).subscribe(response => {
+    ).subscribe({
 
-      console.log(response);
+      next: (response) => {
+        this.router.navigate([
+          '/admin/login'
+        ]);
+      },
+
+      error: (error) => {
+        this.errorMessage =
+          error.error.message;
+      }
+
     });
   }
 }

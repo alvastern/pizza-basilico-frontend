@@ -13,6 +13,8 @@ import { Login } from './pages/admin/login/login';
 import { Register } from './pages/admin/register/register';
 import { Dashboard } from './pages/admin/dashboard/dashboard';
 
+import { authGuard } from './guards/auth-guard';
+
 export const routes: Routes = [
     { path: '', component: Home },
 
@@ -26,5 +28,5 @@ export const routes: Routes = [
 
     { path: 'admin/login', component: Login },
     { path: 'admin/register', component: Register },
-    { path: 'admin/dashboard', component: Dashboard }
+    { path: 'admin/dashboard', component: Dashboard, canActivate: [authGuard] }
 ];
