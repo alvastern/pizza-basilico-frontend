@@ -4,7 +4,7 @@
     <article id="login-card">
         <h1>Logga in</h1>
 
-        <form (ngSubmit)="loginUser()">
+        <form>
             <div class="input-group">
                 <input type="email" placeholder="E-postadress" [(ngModel)]="email" name="email">
             </div>
@@ -15,7 +15,7 @@
 
             <p *ngIf="errorMessage">{{ errorMessage }}</p>
 
-            <button type="submit">Logga in</button>
+            <button type="button" (click)="loginUser()">Logga in</button>
         </form>
 
         <p id="register-text">Jobbar du på Pizza Basilico och inte har något 

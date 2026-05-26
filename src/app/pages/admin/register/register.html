@@ -1,14 +1,14 @@
 <section>
     <app-header-admin></app-header-admin>
 
-    <form (ngSubmit)="registerUser()">
-        <input type="text" placeholder="Användarnamn" [(ngModel)]="username" name="username">
+    <form>
         <input type="email" placeholder="E-postadress" [(ngModel)]="email" name="email">
         <input type="password" placeholder="Lösenord" [(ngModel)]="password" name="password">
         <input type="password" placeholder="Bekräfta lösenord" [(ngModel)]="confirmPassword" name="confirmPassword">
 
         <p *ngIf="errorMessage">{{ errorMessage }}</p>
+        <p *ngIf="successMessage">{{ successMessage }}</p>
 
-        <button type="submit">Skapa konto</button>
+        <button type="button" (click)="registerUser()">Skapa konto</button>
     </form>
 </section>

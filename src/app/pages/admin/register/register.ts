@@ -3,21 +3,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HeaderAdmin } from "../../../components/header/header-admin/header-admin";
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, HeaderAdmin],
+  imports: [FormsModule, HeaderAdmin, CommonModule],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
 
 export class Register {
-
-  username = '';
   email = '';
   password = '';
   confirmPassword = '';
   errorMessage = '';
+  successMessage = '';
 
   constructor(
     private http: HttpClient,
@@ -26,7 +26,6 @@ export class Register {
 
   registerUser() {
     if(
-      !this.username ||
       !this.email ||
       !this.password ||
       !this.confirmPassword
@@ -54,24 +53,30 @@ export class Register {
     this.errorMessage = '';
 
     const userData = {
-      username: this.username,
       email: this.email,
       password: this.password
 
     };
 
     this.http.post(
-      'http://localhost:3000/register',
+      'http://localhost:3000/auth/register',
       userData
     ).subscribe({
 
       next: (response) => {
-        this.router.navigate([
-          '/admin/login'
-        ]);
+        this.successMessage =
+          'Konto har skapats!';
+
+        setTimeout(() => {
+          this.router.navigate([
+            '/admin/login'
+          ]);
+        }, 1500);
       },
 
       error: (error) => {
+        console.log(error);
+
         this.errorMessage =
           error.error.message;
       }
