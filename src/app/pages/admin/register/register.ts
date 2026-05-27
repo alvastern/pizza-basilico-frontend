@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HeaderAdmin } from "../../../components/header/header-admin/header-admin";
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-register',
@@ -21,10 +22,14 @@ export class Register {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   registerUser() {
+    this.errorMessage = '';
+    this.successMessage = '';
+
     if(
       !this.email ||
       !this.password ||
@@ -64,21 +69,19 @@ export class Register {
     ).subscribe({
 
       next: (response) => {
-        this.successMessage =
-          'Konto har skapats!';
+        this.successMessage = 'Konto har skapats!';
 
         setTimeout(() => {
-          this.router.navigate([
-            '/admin/login'
-          ]);
+          this.router.navigateByUrl('/admin/login');
         }, 1500);
       },
 
       error: (error) => {
-        console.log(error);
-
         this.errorMessage =
-          error.error.message;
+          error?.error?.message ||
+          'Fel e-postadress eller lösenord';
+
+        this.cdr.detectChanges();
       }
 
     });

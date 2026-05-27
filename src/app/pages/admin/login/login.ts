@@ -4,6 +4,7 @@ import { Router, RouterLink } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +17,17 @@ export class Login {
   email = '';
   password = '';
   errorMessage = '';
+  successMessage= '';
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   loginUser() {
     this.errorMessage = '';
+    this.successMessage = '';
 
     if(!this.email || !this.password) {
       this.errorMessage =
@@ -53,11 +57,11 @@ export class Login {
       },
 
       error: (error) => {
-        console.log(error);
-
         this.errorMessage =
-          error.error?.message ||
+          error?.error?.message ||
           'Fel e-postadress eller lösenord';
+
+        this.cdr.detectChanges();
       }
       
     });
