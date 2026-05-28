@@ -6,22 +6,22 @@
     <form class="fade-up">
         <div class="input">
             <label for="namn">För- och efternamn: </label>
-            <input type="text" id="namn">
+            <input type="text" id="namn" [(ngModel)]="name" name="name">
         </div>
 
         <div class="input">
             <label for="e-post">E-postadress: </label>
-            <input type="text" id="e-post">
+            <input type="text" id="e-post" [(ngModel)]="email" name="email">
         </div>
 
         <div class="input">
             <label for="nummer">Telefonnummer: </label>
-            <input type="text" id="nummer">
+            <input type="text" id="nummer" [(ngModel)]="phone_number" name="phone_number">
         </div>
 
         <div class="input">
             <label for="time">Tid för avhämtning: </label>
-            <select id="time">
+            <select id="time" [(ngModel)]="pickup_time" name="pickup_time">
                 <option>17:00</option>
                 <option>17:15</option>
                 <option>17:30</option>
@@ -73,6 +73,6 @@
 
         <p>Totalt: {{ getTotal() }} kr</p>
 
-        <button routerLink="/takeaway/pay" id="pay-knapp">Till betalning</button>
+        <button routerLink="/takeaway/pay" id="pay-knapp" (click)="saveOrderInfo()">Till betalning</button>
     </article>
 </section>

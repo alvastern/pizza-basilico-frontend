@@ -14,6 +14,14 @@ interface Booking {
   phone_number: string;
 }
 
+interface TakeawayOrder {
+  order_id: number;
+  name: string;
+  phone_number: string;
+  pickup_time: string;
+  items: string;
+}
+
 @Component({
   selector: 'app-dashboard',
   imports: [CommonModule, HeaderAdmin, FormsModule],
@@ -22,7 +30,6 @@ interface Booking {
 })
 
 export class Dashboard implements OnInit {
-
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   selectedBooking: Booking | null = null;
@@ -30,7 +37,6 @@ export class Dashboard implements OnInit {
 
   bookings: Booking[] = [];
 
-  // Endast dagens datum
   selectedDate = new Date().toLocaleDateString('sv-CA');
 
   tables: {
@@ -48,6 +54,7 @@ export class Dashboard implements OnInit {
 
   ngOnInit() {
     this.getBookings();
+    this.getTakeawayOrders();
   }
 
   getBookings() {
@@ -116,5 +123,36 @@ export class Dashboard implements OnInit {
     this.selectedBooking = null;
     this.fromTable = null;
   }
+
+
+
+
+  takeawayOrders: TakeawayOrder[] = [];
+
+  getTakeawayOrders() {
+    this.http.get<TakeawayOrder[]>('http://localhost:3000/takeaway').subscribe({
+      
+    next: (response) => {
+      this.takeawayOrders = [...response];
+      this.cdr.detectChanges();
+      console.log(this.takeawayOrders);
+    },
+
+    error: (error) => {
+      console.log(error);
+    }
+  });
+}
+
+completeOrder(orderId: number) {
+    this.http.put(`http://localhost:3000/takeaway/complete/${orderId}`, {}).subscribe({next: () => {
+      this.getTakeawayOrders();
+    },
+
+    error: (error) => {
+      console.log(error);
+    }
+  });
+}
 
 }

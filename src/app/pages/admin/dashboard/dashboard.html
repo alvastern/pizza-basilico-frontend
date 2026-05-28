@@ -40,4 +40,16 @@
             </div>
         </article>
     </section>
+
+    <section id="takeaway-section">
+        <h2>Takeaway-beställningar</h2>
+        <div class="takeaway-card" *ngFor="let order of takeawayOrders">
+            <p><strong>Avhämtning:</strong>{{ order.pickup_time.slice(0,5) }}</p>
+            <p><strong>Namn:</strong>{{ order.name }}</p>
+            <p><strong>Telefon:</strong>{{ order.phone_number }}</p>
+            <p><strong>Beställning:</strong>{{ order.items }}</p>
+
+            <button (click)="completeOrder(order.order_id)">Färdig</button>
+        </div>
+    </section>
 </main>

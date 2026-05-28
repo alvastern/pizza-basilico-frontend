@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Header } from "../../../components/header/header";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-takeaway-pay',
@@ -9,14 +10,23 @@ import { Header } from "../../../components/header/header";
   templateUrl: './takeaway-pay.html',
   styleUrl: './takeaway-pay.scss',
 })
+
 export class TakeawayPay {
+
+  constructor(private http: HttpClient) {}
+
   cart: any[] = [];
+  orderInfo: any = {};
 
   ngOnInit() {
     const savedCart = localStorage.getItem("cart");
-
     if(savedCart) {
       this.cart = JSON.parse(savedCart);
+    }
+
+    const savedInfo = localStorage.getItem("orderInfo");
+    if(savedInfo) {
+      this.orderInfo = JSON.parse(savedInfo);
     }
   }
 
@@ -26,4 +36,36 @@ export class TakeawayPay {
         total + (pizza.price * pizza.quantity), 0
     );
   }
+
+  placeOrder() {
+    const orderData = {
+      name: this.orderInfo.name,
+      email: this.orderInfo.email,
+      phone_number: this.orderInfo.phone_number,
+      pickup_time: this.orderInfo.pickup_time,
+
+      total_price: this.getTotal(),
+
+      items: this.cart.map(pizza => ({
+        item_id: pizza.item_id,
+        quantity: pizza.quantity
+    }))
+
+  };
+
+  this.http.post('http://localhost:3000/takeaway', orderData).subscribe({next: () => {
+      localStorage.removeItem("cart");
+      localStorage.removeItem("orderInfo");
+
+      window.location.href = "/takeaway/tack";
+    },
+
+    error: (error) => {
+      console.log(error);
+    }
+
+  });
+
+  }
+
 }

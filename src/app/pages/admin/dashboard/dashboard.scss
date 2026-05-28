@@ -31,3 +31,25 @@
     padding: 1rem;
     border-radius: 10px;
 }
+
+
+
+#takeaway-section {
+    margin-top: 4rem;
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+}
+
+.takeaway-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f9f9f9;
+
+    p {
+        margin: 0.4rem 0;
+    }
+}

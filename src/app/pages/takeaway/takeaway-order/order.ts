@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Header } from "../../../components/header/header";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [CommonModule, RouterLink, Header],
+  imports: [CommonModule, RouterLink, Header, FormsModule],
   templateUrl: './order.html',
   styleUrl: './order.scss',
 })
@@ -16,6 +17,11 @@ export class Order implements OnInit {
 
   pizzas: any[] = [];
   cart: any[] = [];
+
+  name = '';
+  email = '';
+  phone_number = '';
+  pickup_time = '';
 
   constructor(
     private http: HttpClient,
@@ -108,4 +114,22 @@ export class Order implements OnInit {
       observer.observe(element);
     });
   }
+
+  saveOrderInfo() {
+
+  const orderInfo = {
+
+    name: this.name,
+    email: this.email,
+    phone_number: this.phone_number,
+    pickup_time: this.pickup_time
+
+  };
+
+  localStorage.setItem(
+    "orderInfo",
+    JSON.stringify(orderInfo)
+  );
+
+}
 }
