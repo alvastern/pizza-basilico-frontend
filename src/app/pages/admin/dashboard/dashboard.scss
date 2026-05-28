@@ -1,0 +1,33 @@
+#booking-system {
+    display: flex;
+    gap: 2rem;
+}
+
+#booking-list {
+    width: 300px;
+}
+
+.booking-card {
+    background: #f3f3f3;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    cursor: grab;
+}
+
+#tables-wrapper {
+    flex: 1;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.table-card {
+    background: #e5e5e5;
+    min-height: 180px;
+    padding: 1rem;
+    border-radius: 10px;
+}

@@ -5,19 +5,28 @@
 
         <form>
             <div>
-                <label for="weekday">Vilken dag vill du boka? </label>
-                <select id="weekday">
-                    <option>Onsdag</option>
-                    <option>Torsdag</option>
-                    <option>Fredag</option>
-                    <option>Lördag</option>
-                    <option>Söndag</option>
-                </select>
+                <label for="namn">För- och efternamn: </label>
+                <input type="text" id="namn" [(ngModel)]="name" name="name">
+            </div>
+
+            <div>
+                <label for="e-post">E-postadress: </label>
+                <input type="text" id="e-post" [(ngModel)]="email" name="email">
+            </div>
+
+            <div>
+                <label for="nummer">Telefonnummer: </label>
+                <input type="text" id="nummer" [(ngModel)]="phoneNumber" name="phoneNumber">
+            </div>
+
+            <div>
+                <label for="booking-date">Vilket datum vill du boka? </label>
+                <input type="date" [(ngModel)]="bookingDate" name="bookingDate" id="booking-date"/>
             </div>
 
             <div>
                 <label for="guests">Hur många är ni? </label>
-                <select id="guests">
+                <select id="guests" [(ngModel)]="guestNumber" name="guestNumber">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -29,7 +38,7 @@
 
             <div>
                 <label for="time">Vilken tid vill ni äta? </label>
-                <select id="time">
+                <select id="time" [(ngModel)]="bookingTime" name="bookingTime">
                     <option>17:00</option>
                     <option>18:00</option>
                     <option>19:00</option>
@@ -40,7 +49,7 @@
         </form>
 
         <article id="knappar-boka">
-            <button routerLink="/boka-bord/kontakt" id="knapp-fortsatt">Fortsätt</button>
+            <button (click)="bookTable()" id="knapp-fortsatt">Boka bord</button>
             <button routerLink="/" id="knapp-avbryt">Avbryt</button>
         </article>
     </div>

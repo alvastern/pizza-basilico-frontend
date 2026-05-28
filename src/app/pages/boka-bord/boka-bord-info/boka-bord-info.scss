@@ -1,11 +1,10 @@
 #boka-bord-sektion {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
     url(/images/tables.jpg);
-
-    height: 100vh;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 10vh;
 }
 
 #boka-bord-sektion h2 {
@@ -23,11 +22,21 @@ form {
         flex-direction: column;
         gap: 1vh;
 
-        select {
+        #namn, #nummer, #booking-date, #e-post {
             padding: 1vh 0.5vw;
             width: 35ch;
         }
+
+        select {
+            padding: 1vh 0.5vw;
+            width: 20vh;
+        }
     }
+}
+
+#booking-date {
+    padding: 1vh 0.5vw;
+    width: 33.5ch;
 }
 
 #knapp-fortsatt {
@@ -101,6 +110,16 @@ form {
 
     form div select {
         width: 50%;
+        padding: 1vh 1vw;
+    }
+
+    form div #namn, form div #nummer, form div #e-post, form div #booking-date {
+        width: 50%;
+        padding: 1vh 1vw;
+    }
+
+    #booking-date {
+        width: 47.5%;
         padding: 1vh 1vw;
     }
 

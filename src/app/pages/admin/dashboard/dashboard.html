@@ -1,1 +1,43 @@
-<p>dashboard works!</p>
+<section>
+    <app-header-admin></app-header-admin>
+</section>
+
+<main>
+    <h1>Välkommen till Pizza Basilico administration!</h1>
+
+    <section id="booking-system">
+        <article id="booking-list" (dragover)="allowDrop($event)" (drop)="returnBooking()">
+
+            <h2>Dagens bokningar</h2>
+            <input type="date" [(ngModel)]="selectedDate" (change)="getBookings()"/>
+
+            <div class="booking-card" *ngFor="let booking of bookings" draggable="true" (dragstart)="dragStart(booking)">
+                <p>{{ booking.booking_time.slice(0,5) }}</p>
+                <p>{{ booking.guest_number }} personer</p>
+                <p>{{ booking.phone_number }}</p>
+                <p>{{ booking.email }}</p>
+            </div>
+        </article>
+
+        <article id="tables-wrapper">
+            <div class="table-row">
+                <div class="table-card" *ngFor="let table of tables" (dragover)="allowDrop($event)" (drop)="dropBooking(table)">
+                    <h3>Bord {{ table.id }}</h3>
+
+                    <p>{{ table.seats }} platser</p>
+
+                    <div *ngIf="table.booking as booking" draggable="true" (dragstart)="dragStart(booking, table)">
+                        <p>{{ booking.booking_time.slice(0,5) }}</p>
+                        <p>{{ booking.guest_number }} personer</p>
+                        <p>{{ booking.phone_number }}</p>
+                        <p>{{ booking.email }}</p>
+                    </div>
+
+                    <div *ngIf="!table.booking">
+                        <p>Ledigt bord</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
