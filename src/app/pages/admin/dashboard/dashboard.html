@@ -1,6 +1,4 @@
-<section>
-    <app-header-admin></app-header-admin>
-</section>
+<app-header-admin></app-header-admin>
 
 <main>
     <h1>Välkommen till Pizza Basilico administration!</h1>
@@ -9,28 +7,24 @@
         <article id="booking-list" (dragover)="allowDrop($event)" (drop)="returnBooking()">
 
             <h2>Dagens bokningar</h2>
-            <input type="date" [(ngModel)]="selectedDate" (change)="getBookings()"/>
+            <input type="date" [(ngModel)]="selectedDate" (change)="getBookings()" id="select-date"/>
 
             <div class="booking-card" *ngFor="let booking of bookings" draggable="true" (dragstart)="dragStart(booking)">
-                <p>{{ booking.booking_time.slice(0,5) }}</p>
-                <p>{{ booking.guest_number }} personer</p>
+                <strong><p>{{ booking.booking_time.slice(0,5) }} - {{ booking.guest_number }} personer</p></strong>
+                <p>{{ booking.name }}</p>
                 <p>{{ booking.phone_number }}</p>
-                <p>{{ booking.email }}</p>
             </div>
         </article>
 
         <article id="tables-wrapper">
             <div class="table-row">
-                <div class="table-card" *ngFor="let table of tables" (dragover)="allowDrop($event)" (drop)="dropBooking(table)">
-                    <h3>Bord {{ table.id }}</h3>
-
-                    <p>{{ table.seats }} platser</p>
+                <div class="table-card" *ngFor="let table of tables" (dragover)="allowDrop($event)" (drop)="dropBooking(table)" [class.available]="!table.booking" [class.occupied]="table.booking">
+                    <p><strong>Bord {{ table.id }}</strong> ({{ table.seats }} platser)</p>
 
                     <div *ngIf="table.booking as booking" draggable="true" (dragstart)="dragStart(booking, table)">
-                        <p>{{ booking.booking_time.slice(0,5) }}</p>
-                        <p>{{ booking.guest_number }} personer</p>
+                        <strong><p>{{ booking.booking_time.slice(0,5) }} - {{ booking.guest_number }} personer</p></strong>
+                        <p>{{ booking.name }}</p>
                         <p>{{ booking.phone_number }}</p>
-                        <p>{{ booking.email }}</p>
                     </div>
 
                     <div *ngIf="!table.booking">
@@ -44,10 +38,10 @@
     <section id="takeaway-section">
         <h2>Takeaway-beställningar</h2>
         <div class="takeaway-card" *ngFor="let order of takeawayOrders">
-            <p><strong>Avhämtning:</strong>{{ order.pickup_time.slice(0,5) }}</p>
-            <p><strong>Namn:</strong>{{ order.name }}</p>
-            <p><strong>Telefon:</strong>{{ order.phone_number }}</p>
-            <p><strong>Beställning:</strong>{{ order.items }}</p>
+            <p class="pickup-time"><strong>Avhämtning:</strong> {{ order.pickup_time.slice(0,5) }}</p>
+            <p><strong>Namn:</strong> {{ order.name }}</p>
+            <p><strong>Telefon:</strong> {{ order.phone_number }}</p>
+            <p><strong>Beställning:</strong> 🍕 {{ order.items }}</p>
 
             <button (click)="completeOrder(order.order_id)">Färdig</button>
         </div>
@@ -61,23 +55,30 @@
 
         <section id="menu-admin-content" *ngIf="isMenuOpen">
             <div id="menu-grid">
-                <article class="menu-card" *ngFor="let pizza of menuItems">
-                    <div class="menu-info">
-                        <h3>{{ pizza.title }}</h3>
-                        <p>{{ pizza.description }}</p>
-                        <span>{{ pizza.price }} kronor</span>
+                <div class="menu-item-wrapper" *ngFor="let pizza of menuItems">
+                    <article class="menu-card">
+                        <div class="menu-info">
+                            <h3>{{ pizza.title }}</h3>
+                            <p>{{ pizza.description }}</p>
+                            <span>{{ pizza.price }} kronor</span>
+                        </div>
+
+                        <img [src]="'/images/meny/' + pizza.image" alt="{{ pizza.title }}">
+                    </article>
+
+                    <div class="menu-actions">
+                        <button class="edit-button" (click)="editPizza(pizza)">✎</button>
+                        <button class="delete-button" (click)="deletePizza(pizza.item_id)">🗑</button>
                     </div>
 
-                    <img [src]="'/images/meny/' + pizza.image" alt="{{ pizza.title }}">
-                    <button class="edit-button" (click)="editPizza(pizza); $event.stopPropagation()">✏️</button>
-                    <button class="delete-button" (click)="deletePizza(pizza.item_id); $event.stopPropagation()">🗑️</button>
-                </article>
-            </div>
-
-            <button id="add-pizza-button" (click)="openAddPizza(); $event.stopPropagation()">+</button>
+                    </div>
+                        <div class="add-pizza-card" (click)="openAddPizza()">
+                            <span>+</span>
+                        </div>
+                    </div>
 
             <section id="menu-form-section" *ngIf="showMenuForm">
-                <h3>{{ selectedPizza ? 'Redigera pizza': 'Lägg till pizza' }}</h3>
+                <h3>{{ selectedPizza ? 'Redigera pizza' : 'Lägg till pizza' }}</h3>
 
                 <div class="input-group">
                     <label>Titel</label>
@@ -105,94 +106,40 @@
     </section>
 
     <section id="about-admin-section">
-
-    <article
-        id="about-admin-header"
-        (click)="isAboutOpen = !isAboutOpen">
-
-        <h2>Om oss & Öppettider</h2>
-
-        <span>
-            {{ isAboutOpen ? '⌃' : '⌄' }}
-        </span>
-
-    </article>
-
-    <section
-        id="about-admin-content"
-        *ngIf="isAboutOpen">
-
-        <!-- INTRODUKTIONSTEXT -->
-
-        <article class="about-card">
-
-            <h3>Introduktionstext</h3>
-
-            <textarea
-                [(ngModel)]="homepageText">
-            </textarea>
-
-            <button
-                (click)="saveHomepage()">
-
-                Spara
-
-            </button>
-
+        <article id="about-admin-header" (click)="isAboutOpen = !isAboutOpen">
+            <h2>Om oss & Öppettider</h2>
+            <span>{{ isAboutOpen ? '⌃' : '⌄' }}</span>
         </article>
 
-        <!-- OM FÖRETAGET -->
+        <section id="about-admin-content" *ngIf="isAboutOpen">
+            <article class="about-card">
+                <h3>Introduktionstext</h3>
+                <div class="edit-row">
+                    <textarea [(ngModel)]="homepageText"></textarea>
+                </div>
 
-        <article class="about-card">
+                <button (click)="saveHomepage()" class="spara-knapp">Spara</button>
+            </article>
 
-            <h3>Om företaget</h3>
+            <article class="about-card">
+                <h3>Om företaget</h3>
+                <div class="edit-row">
+                    <textarea [(ngModel)]="aboutText"></textarea>
+                </div>
 
-            <textarea
-                [(ngModel)]="aboutText">
-            </textarea>
+                <button (click)="saveAbout()" class="spara-knapp">Spara</button>
+            </article>
 
-            <button
-                (click)="saveAbout()">
+            <article class="about-card">
+                <h3>Öppettider</h3>
+                <div *ngFor="let hour of openingHours">
+                    <input type="text" [(ngModel)]="hour.weekday">
+                    <input type="time" [(ngModel)]="hour.open_time">
+                    <input type="time" [(ngModel)]="hour.close_time">
+                </div>
 
-                Spara
-
-            </button>
-
-        </article>
-
-        <!-- ÖPPETTIDER -->
-
-        <article class="about-card">
-
-            <h3>Öppettider</h3>
-
-            <div
-                *ngFor="let hour of openingHours">
-
-                <input
-                    type="text"
-                    [(ngModel)]="hour.weekday">
-
-                <input
-                    type="time"
-                    [(ngModel)]="hour.open_time">
-
-                <input
-                    type="time"
-                    [(ngModel)]="hour.close_time">
-
-            </div>
-
-            <button
-                (click)="saveHours()">
-
-                Spara öppettider
-
-            </button>
-
-        </article>
-
+                <button (click)="saveHours()" id="spara-tider-knapp">Spara öppettider</button>
+            </article>
+        </section>
     </section>
-
-</section>
 </main>
