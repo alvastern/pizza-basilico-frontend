@@ -106,7 +106,6 @@ select {
 }
 
 #add-button {
-    background-color: white;
     border: none;
     padding: 1vh 1vw;
     margin: 2.5vh 0 2.5vh 0;
@@ -114,10 +113,19 @@ select {
     border-radius: 1rem;
     font-weight: 700;
     cursor: pointer;
+    background-color: white;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+
+    box-shadow: 0 4px 12px rgba(122,13,13,0.25);
 }
 
-#add-button:hover {
-    background-color: grey;
+#add-button:hover, #pay-knapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(122,13,13,0.35);
+    filter: brightness(1.1);
 }
 
 #pay-knapp {
@@ -127,10 +135,13 @@ select {
     padding: 2vh 2vw;
     border-radius: 2rem;
     cursor: pointer;
-}
+    background-color: white;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
 
-#pay-knapp:hover {
-    background-color: grey;
+    box-shadow: 0 4px 12px rgba(122,13,13,0.25);
 }
 
 #items-varukorg {

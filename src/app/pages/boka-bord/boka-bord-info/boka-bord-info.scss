@@ -40,6 +40,8 @@ form {
 }
 
 #knapp-fortsatt {
+    background-color:#7a0d0d;
+    color: white;
     padding: 1rem 2rem;
     border-radius: 3rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
@@ -49,6 +51,10 @@ form {
     margin: 0 5ch 0 5vw;
     cursor: pointer;
     width: 20ch;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
 #knapp-avbryt {
@@ -58,10 +64,16 @@ form {
     font-weight: 700;
     cursor: pointer;
     width: 15ch;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
 #knapp-fortsatt:hover, #knapp-avbryt:hover {
-    background-color: gray;
+    background-color: #6c1313;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(122, 13, 13, 0.35);
 }
 
 // Animationer

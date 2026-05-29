@@ -27,11 +27,19 @@ h2 {
     font-weight: 700;
     width: 25ch;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    background-color: white;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+
+    box-shadow: 0 4px 12px rgba(122,13,13,0.25);
 }
 
-#andra-knapp:hover {
-    background-color: gray;
+#andra-knapp:hover, .betalning-knapp:hover, #skicka-knapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(122,13,13,0.35);
+    filter: brightness(1.1);
 }
 
 #betalning-rubrik {
@@ -54,10 +62,6 @@ h2 {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
-.betalning-knapp:hover {
-    background-color: gray;
-}
-
 #skicka-knapp {
     background-color: #5E1010;
     color: white;
@@ -68,10 +72,6 @@ h2 {
     margin: 2.5vh 0 0 5vw;
     width: 30ch;
     cursor: pointer;
-}
-
-#skicka-knapp:hover {
-    background-color: gray;
 }
 
 // Animationer
