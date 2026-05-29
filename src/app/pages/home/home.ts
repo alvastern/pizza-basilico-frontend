@@ -34,7 +34,7 @@ export class Home implements OnInit, AfterViewInit {
 
       });
 
-    this.http.get<any[]>("http://localhost:3000/information")
+    this.http.get<any[]>("http://localhost:3000/pages")
       .subscribe(data => {
 
         const aboutPage = data.find(

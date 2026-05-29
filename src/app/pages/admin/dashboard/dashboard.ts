@@ -30,12 +30,30 @@ interface TakeawayOrder {
 })
 
 export class Dashboard implements OnInit {
+
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   selectedBooking: Booking | null = null;
   fromTable: any = null;
+  selectedPizza: any = null;
 
   bookings: Booking[] = [];
+  menuItems: any[] = [];
+  openingHours: any[] = [];
+
+  isMenuOpen = false;
+  showMenuForm = false;
+  isAboutOpen = false;
+
+  aboutText = '';
+  homepageText = '';
+
+  menuForm = {
+    title: '',
+    description: '',
+    price: null,
+    image: ''
+  };
 
   selectedDate = new Date().toLocaleDateString('sv-CA');
 
@@ -55,6 +73,10 @@ export class Dashboard implements OnInit {
   ngOnInit() {
     this.getBookings();
     this.getTakeawayOrders();
+    this.getMenuItems();
+    this.getAboutText();
+    this.getOpeningHours();
+    this.getHomepageText();
   }
 
   getBookings() {
@@ -131,7 +153,7 @@ export class Dashboard implements OnInit {
 
   getTakeawayOrders() {
     this.http.get<TakeawayOrder[]>('http://localhost:3000/takeaway').subscribe({
-      
+
     next: (response) => {
       this.takeawayOrders = [...response];
       this.cdr.detectChanges();
@@ -155,4 +177,328 @@ completeOrder(orderId: number) {
   });
 }
 
+getMenuItems() {
+
+  this.http.get<any[]>(
+    'http://localhost:3000/menu'
+  ).subscribe({
+
+    next: (response) => {
+
+      this.menuItems = response;
+
+    },
+
+    error: (error) => {
+
+      console.log(error);
+
+    }
+
+  });
+
+}
+
+editPizza(pizza: any) {
+
+  this.selectedPizza = pizza;
+
+  this.menuForm = {
+
+    title: pizza.title,
+    description: pizza.description,
+    price: pizza.price,
+    image: pizza.image
+
+  };
+
+  this.showMenuForm = true;
+
+}
+
+openAddPizza() {
+
+  this.selectedPizza = null;
+
+  this.menuForm = {
+
+    title: '',
+    description: '',
+    price: null,
+    image: ''
+
+  };
+
+  this.showMenuForm = true;
+
+}
+
+savePizza() {
+
+  const token = localStorage.getItem("token");
+
+  // REDIGERA
+  if(this.selectedPizza) {
+
+    this.http.put(
+      `http://localhost:3000/menu/${this.selectedPizza.item_id}`,
+      this.menuForm,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+    ).subscribe({
+
+      next: () => {
+
+        this.getMenuItems();
+
+        this.showMenuForm = false;
+
+      },
+
+      error: (error) => {
+
+        console.log(error);
+
+      }
+
+    });
+
+  }
+
+  // LÄGG TILL
+  else {
+
+    this.http.post(
+      'http://localhost:3000/menu',
+      this.menuForm,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+    ).subscribe({
+
+      next: () => {
+
+        this.getMenuItems();
+
+        this.showMenuForm = false;
+
+      },
+
+      error: (error) => {
+
+        console.log(error);
+
+      }
+
+    });
+
+  }
+
+}
+
+deletePizza(itemId: number) {
+
+  const token = localStorage.getItem("token");
+
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+
+  if(!confirm("Är du säker på att du vill ta bort pizzan?")) {
+    return;
+  }
+
+  this.http.delete(
+    `http://localhost:3000/menu/${itemId}`,
+    { headers }
+  ).subscribe({
+
+    next: () => {
+
+      this.getMenuItems();
+
+    },
+
+    error: (error) => {
+
+      console.log(error);
+
+    }
+
+  });
+
+}
+
+getAboutText() {
+
+  this.http.get<any>(
+    'http://localhost:3000/pages/about'
+  ).subscribe({
+
+    next: (response) => {
+
+      console.log("ABOUT:", response);
+
+      this.aboutText = response.content;
+
+    }
+  });
+}
+
+getOpeningHours() {
+  this.http.get<any[]>(
+    'http://localhost:3000/opening-hours'
+  ).subscribe({
+
+    next: (response) => {
+      this.openingHours = response.map(hour => ({
+        ...hour,
+        open_time: hour.open_time ? hour.open_time.slice(0, 5) : '',
+        close_time: hour.close_time ? hour.close_time.slice(0, 5) : ''
+      }));
+
+      this.cdr.detectChanges();
+    },
+
+    error: (error) => {
+      console.log(error);
+    }
+
+  });
+}
+
+getHomepageText() {
+
+  this.http.get<any>(
+    'http://localhost:3000/pages/homepage'
+  ).subscribe({
+
+    next: (response) => {
+
+      console.log("HOMEPAGE:", response);
+
+      this.homepageText = response.content;
+
+    }
+  });
+}
+
+saveAbout() {
+
+  const token =
+    localStorage.getItem("token");
+
+  this.http.put(
+
+    'http://localhost:3000/pages/1',
+
+    {
+      content: this.aboutText
+    },
+
+    {
+      headers: {
+        Authorization:
+          `Bearer ${token}`
+      }
+    }
+
+  ).subscribe({
+
+    next: () => {
+
+      alert(
+        'Om oss-text sparad'
+      );
+
+    },
+
+    error: (error) => {
+
+      console.log(error);
+
+    }
+
+  });
+
+}
+
+saveHomepage() {
+
+  const token =
+    localStorage.getItem("token");
+
+  this.http.put(
+
+    'http://localhost:3000/pages/2',
+
+    {
+      content: this.homepageText
+    },
+
+    {
+      headers: {
+        Authorization:
+          `Bearer ${token}`
+      }
+    }
+
+  ).subscribe({
+
+    next: () => {
+
+      alert(
+        'Introduktionstext sparad'
+      );
+
+    },
+
+    error: (error) => {
+
+      console.log(error);
+
+    }
+
+  });
+
+}
+
+saveHours() {
+
+  const token =
+    localStorage.getItem("token");
+
+  this.openingHours.forEach(hour => {
+
+    this.http.put(
+
+      `http://localhost:3000/opening-hours/${hour.hours_id}`,
+
+      hour,
+
+      {
+        headers: {
+          Authorization:
+            `Bearer ${token}`
+        }
+      }
+
+    ).subscribe();
+
+  });
+
+  alert(
+    'Öppettider sparade'
+  );
+
+}
 }

@@ -39,7 +39,7 @@
             <div *ngFor="let day of openingHours">
                 <p *ngIf="!day.is_closed">
                     {{ day.weekday }}:
-                    {{ day.open_time }} - {{ day.close_time }}
+                    {{ day.open_time?.slice(0,5) }} - {{ day.close_time?.slice(0,5) }}
                 </p>
 
                 <p *ngIf="day.is_closed">

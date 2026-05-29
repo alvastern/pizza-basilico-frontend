@@ -52,4 +52,147 @@
             <button (click)="completeOrder(order.order_id)">Färdig</button>
         </div>
     </section>
+
+    <section id="menu-admin-section">
+        <article id="menu-admin-header" (click)="isMenuOpen = !isMenuOpen">
+            <h2>Vår meny</h2>
+            <span>{{ isMenuOpen ? '⌃' : '⌄' }}</span>
+        </article>
+
+        <section id="menu-admin-content" *ngIf="isMenuOpen">
+            <div id="menu-grid">
+                <article class="menu-card" *ngFor="let pizza of menuItems">
+                    <div class="menu-info">
+                        <h3>{{ pizza.title }}</h3>
+                        <p>{{ pizza.description }}</p>
+                        <span>{{ pizza.price }} kronor</span>
+                    </div>
+
+                    <img [src]="'/images/meny/' + pizza.image" alt="{{ pizza.title }}">
+                    <button class="edit-button" (click)="editPizza(pizza); $event.stopPropagation()">✏️</button>
+                    <button class="delete-button" (click)="deletePizza(pizza.item_id); $event.stopPropagation()">🗑️</button>
+                </article>
+            </div>
+
+            <button id="add-pizza-button" (click)="openAddPizza(); $event.stopPropagation()">+</button>
+
+            <section id="menu-form-section" *ngIf="showMenuForm">
+                <h3>{{ selectedPizza ? 'Redigera pizza': 'Lägg till pizza' }}</h3>
+
+                <div class="input-group">
+                    <label>Titel</label>
+                    <input type="text" [(ngModel)]="menuForm.title">
+                </div>
+
+                <div class="input-group">
+                    <label>Beskrivning</label>
+                    <textarea [(ngModel)]="menuForm.description"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Pris</label>
+                    <input type="number" [(ngModel)]="menuForm.price">
+                </div>
+
+                <div class="input-group">
+                    <label>Bild</label>
+                    <input type="text" [(ngModel)]="menuForm.image">
+                </div>
+
+                <button type="button" (click)="savePizza()">Spara</button>
+            </section>
+        </section>
+    </section>
+
+    <section id="about-admin-section">
+
+    <article
+        id="about-admin-header"
+        (click)="isAboutOpen = !isAboutOpen">
+
+        <h2>Om oss & Öppettider</h2>
+
+        <span>
+            {{ isAboutOpen ? '⌃' : '⌄' }}
+        </span>
+
+    </article>
+
+    <section
+        id="about-admin-content"
+        *ngIf="isAboutOpen">
+
+        <!-- INTRODUKTIONSTEXT -->
+
+        <article class="about-card">
+
+            <h3>Introduktionstext</h3>
+
+            <textarea
+                [(ngModel)]="homepageText">
+            </textarea>
+
+            <button
+                (click)="saveHomepage()">
+
+                Spara
+
+            </button>
+
+        </article>
+
+        <!-- OM FÖRETAGET -->
+
+        <article class="about-card">
+
+            <h3>Om företaget</h3>
+
+            <textarea
+                [(ngModel)]="aboutText">
+            </textarea>
+
+            <button
+                (click)="saveAbout()">
+
+                Spara
+
+            </button>
+
+        </article>
+
+        <!-- ÖPPETTIDER -->
+
+        <article class="about-card">
+
+            <h3>Öppettider</h3>
+
+            <div
+                *ngFor="let hour of openingHours">
+
+                <input
+                    type="text"
+                    [(ngModel)]="hour.weekday">
+
+                <input
+                    type="time"
+                    [(ngModel)]="hour.open_time">
+
+                <input
+                    type="time"
+                    [(ngModel)]="hour.close_time">
+
+            </div>
+
+            <button
+                (click)="saveHours()">
+
+                Spara öppettider
+
+            </button>
+
+        </article>
+
+    </section>
+
+</section>
 </main>
