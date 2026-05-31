@@ -15,7 +15,6 @@ import { AfterViewInit } from '@angular/core';
 })
 
 export class Home implements OnInit, AfterViewInit {
-
   pizzas: any[] = [];
   openingHours: any[] = [];
 
@@ -24,8 +23,8 @@ export class Home implements OnInit, AfterViewInit {
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
+  // Hämtar data för meny, om oss-sektion, öppettider och startsidans textparagraf
   ngOnInit() {
-
     this.http.get<any[]>("http://localhost:3000/menu")
       .subscribe(data => {
 
@@ -34,6 +33,7 @@ export class Home implements OnInit, AfterViewInit {
 
       });
 
+    // Hämtar data för startsidans text + text om företaget
     this.http.get<any[]>("http://localhost:3000/pages")
       .subscribe(data => {
 
@@ -51,6 +51,7 @@ export class Home implements OnInit, AfterViewInit {
 
       });
 
+    // Hämmtar data för öppettider
     this.http.get<any[]>("http://localhost:3000/opening-hours")
       .subscribe(data => {
 
@@ -60,6 +61,7 @@ export class Home implements OnInit, AfterViewInit {
       });
   }
 
+  // Funktion för att lägga till scroll-fade animation på element när de kommer in i viewport
   ngAfterViewInit() {
     const elements = document.querySelectorAll('.scroll-fade');
 

@@ -25,6 +25,7 @@ export class Login {
     private cdr: ChangeDetectorRef
   ) {}
 
+  // Funktion för att hantera inloggning
   loginUser() {
     this.errorMessage = '';
     this.successMessage = '';
@@ -40,17 +41,20 @@ export class Login {
       password: this.password
     };
 
+    // Skicka inloggningsdata till backen
     this.http.post<any>(
       'http://localhost:3000/auth/login',
       loginData
     ).subscribe({
 
+      // Hantera svar från servern
       next: (response) => {
         localStorage.setItem(
           'token',
           response.token
         );
 
+        // Skickar användaren till dashboard vid lyckad inloggning
         this.router.navigate([
           '/admin/dashboard'
         ]);
@@ -58,12 +62,11 @@ export class Login {
 
       error: (error) => {
         this.errorMessage =
-          error?.error?.message ||
-          'Fel e-postadress eller lösenord';
+          error?.error?.message || 'Fel e-postadress eller lösenord';
 
         this.cdr.detectChanges();
       }
-      
+
     });
   }
 }

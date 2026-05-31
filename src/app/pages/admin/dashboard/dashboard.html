@@ -3,12 +3,14 @@
 <main>
     <h1>Välkommen till Pizza Basilico administration!</h1>
 
+    <!--Sektion för att hantera bordsbokningar-->
     <section id="booking-system">
         <article id="booking-list" (dragover)="allowDrop($event)" (drop)="returnBooking()">
 
             <h2>Dagens bokningar</h2>
             <input type="date" [(ngModel)]="selectedDate" (change)="getBookings()" id="select-date"/>
 
+            <!--Kort för dagens bokningar-->
             <div class="booking-card" *ngFor="let booking of bookings" draggable="true" (dragstart)="dragStart(booking)">
                 <strong><p>{{ booking.booking_time.slice(0,5) }} - {{ booking.guest_number }} personer</p></strong>
                 <p>{{ booking.name }}</p>
@@ -16,6 +18,7 @@
             </div>
         </article>
 
+        <!--Sektion för de olika borden i restaurangen-->
         <article id="tables-wrapper">
             <div class="table-row">
                 <div class="table-card" *ngFor="let table of tables" (dragover)="allowDrop($event)" (drop)="dropBooking(table)" [class.available]="!table.booking" [class.occupied]="table.booking">
@@ -35,6 +38,7 @@
         </article>
     </section>
 
+    <!--Sektion för takeaway-beställningar-->
     <section id="takeaway-section">
         <h2>Takeaway-beställningar</h2>
         <div class="takeaway-card" *ngFor="let order of takeawayOrders">
@@ -47,12 +51,14 @@
         </div>
     </section>
 
+    <!--Sektion för att hantera och redigera menyn-->
     <section id="menu-admin-section">
         <article id="menu-admin-header" (click)="isMenuOpen = !isMenuOpen">
             <h2>Vår meny</h2>
             <span>{{ isMenuOpen ? '⌃' : '⌄' }}</span>
         </article>
 
+        <!--Sektion för att visa och redigera menyposter-->
         <section id="menu-admin-content" *ngIf="isMenuOpen">
             <div id="menu-grid">
                 <div class="menu-item-wrapper" *ngFor="let pizza of menuItems">
@@ -66,17 +72,20 @@
                         <img [src]="'/images/meny/' + pizza.image" alt="{{ pizza.title }}">
                     </article>
 
+                    <!--Åtgärder för att hantera menyn-->
                     <div class="menu-actions">
                         <button class="edit-button" (click)="editPizza(pizza)">✎</button>
                         <button class="delete-button" (click)="deletePizza(pizza.item_id)">🗑</button>
                     </div>
 
+                    <!--Knapp för att lägga till en ny pizza-->
                     </div>
                         <div class="add-pizza-card" (click)="openAddPizza()">
                             <span>+</span>
                         </div>
                     </div>
 
+            <!--Sektion för att visa och redigera menyn-->
             <section id="menu-form-section" *ngIf="showMenuForm">
                 <h3>{{ selectedPizza ? 'Redigera pizza' : 'Lägg till pizza' }}</h3>
 
@@ -105,12 +114,14 @@
         </section>
     </section>
 
+    <!--Sektion för att hantera information om restaurangen-->
     <section id="about-admin-section">
         <article id="about-admin-header" (click)="isAboutOpen = !isAboutOpen">
             <h2>Om oss & Öppettider</h2>
             <span>{{ isAboutOpen ? '⌃' : '⌄' }}</span>
         </article>
 
+        <!--Innehåll för sektionen om restaurangen-->
         <section id="about-admin-content" *ngIf="isAboutOpen">
             <article class="about-card">
                 <h3>Introduktionstext</h3>

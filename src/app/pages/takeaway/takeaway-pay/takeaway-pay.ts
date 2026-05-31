@@ -18,6 +18,7 @@ export class TakeawayPay {
   cart: any[] = [];
   orderInfo: any = {};
 
+  // Hämtar varukorg och orderinfo från local storage
   ngOnInit() {
     const savedCart = localStorage.getItem("cart");
     if(savedCart) {
@@ -30,6 +31,7 @@ export class TakeawayPay {
     }
   }
 
+  // Funktion för att räkna ut den totala kostnaden i varukorgen
   getTotal() {
     return this.cart.reduce(
       (total, pizza) =>
@@ -37,6 +39,7 @@ export class TakeawayPay {
     );
   }
 
+  // Funktion för att genomföra betalning och skicka orderdata till backend
   placeOrder() {
     const orderData = {
       name: this.orderInfo.name,
@@ -53,19 +56,18 @@ export class TakeawayPay {
 
   };
 
-  this.http.post('http://localhost:3000/takeaway', orderData).subscribe({next: () => {
-      localStorage.removeItem("cart");
-      localStorage.removeItem("orderInfo");
+    // Skickar orderdata till backend och hanterar svaret
+    this.http.post('http://localhost:3000/takeaway', orderData).subscribe({next: () => {
+        localStorage.removeItem("cart");
+        localStorage.removeItem("orderInfo");
 
-      window.location.href = "/takeaway/tack";
-    },
+        window.location.href = "/takeaway/tack";
+      },
 
-    error: (error) => {
-      console.log(error);
-    }
+      error: (error) => {
+        console.log(error);
+      }
 
-  });
-
+    });
   }
-
 }

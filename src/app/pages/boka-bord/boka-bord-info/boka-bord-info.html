@@ -1,8 +1,10 @@
+<!--Sektion för att boka bord-->
 <section id="boka-bord-sektion">
     <app-header></app-header>
     <div class="fade-up">
         <h2>Boka bord</h2>
 
+        <!--Formulär för att boka bord-->
         <form>
             <div>
                 <label for="namn">För- och efternamn: </label>
@@ -48,6 +50,7 @@
             </div>
         </form>
 
+        <!--Knappar för att genomföra eller avbryta bokningen-->
         <article id="knappar-boka">
             <button (click)="bookTable()" id="knapp-fortsatt">Boka bord</button>
             <button routerLink="/" id="knapp-avbryt">Avbryt</button>

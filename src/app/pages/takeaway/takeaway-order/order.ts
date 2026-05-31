@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class Order implements OnInit {
-
   pizzas: any[] = [];
   cart: any[] = [];
 
@@ -28,6 +27,7 @@ export class Order implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
+  // Hämtar data för meny och sparar varukorg i local storage
   ngOnInit() {
     this.http.get<any[]>("http://localhost:3000/menu")
       .subscribe(data => {
@@ -35,17 +35,20 @@ export class Order implements OnInit {
         this.cdr.detectChanges();
       });
 
+    // Hämtar varukorg från local storage om den finns
     const savedCart = localStorage.getItem("cart");
       if(savedCart) {
         this.cart = JSON.parse(savedCart);
       }
   }
 
+  // Funktion för att hantera varukorg
   addToCart(pizza: any) {
     const existingPizza = this.cart.find(
       item => item.item_id === pizza.item_id
     );
 
+    // Om pizzan redan finns, öka med en, annars lägg i varukorgen
     if(existingPizza) {
       existingPizza.quantity++;
     } else {
@@ -55,21 +58,25 @@ export class Order implements OnInit {
       });
     }
 
+    // Sparar i local storage när varukorgen uppdateras
     localStorage.setItem(
       "cart",
       JSON.stringify(this.cart)
     );
   }
 
+  // Funktion för att öka antal av en pizza i varukorgen
   increaseQuantity(pizza: any) {
     pizza.quantity++;
 
+    // uppdaterar local storage
     localStorage.setItem(
       "cart",
       JSON.stringify(this.cart)
     );
   }
 
+  // Funktion för att minska antal av en pizza i varukorgen 
   decreaseQuantity(pizza: any) {
     if(pizza.quantity > 1) {
       pizza.quantity--;
@@ -80,12 +87,14 @@ export class Order implements OnInit {
       );
     }
 
+    // Uppdaterar local storage
     localStorage.setItem(
       "cart",
       JSON.stringify(this.cart)
     );
   }
 
+  // Funktion för att räkna ut den totala kostnaden i varukorgen
   getTotal() {
     return this.cart.reduce(
       (total, pizza) =>
@@ -93,6 +102,7 @@ export class Order implements OnInit {
     );
   }
 
+  // Scroll-fade animation på elemenr när de kommer in i viewport
   ngAfterViewInit() {
     const elements = document.querySelectorAll('.scroll-fade');
 
@@ -115,21 +125,21 @@ export class Order implements OnInit {
     });
   }
 
+  // Funktion för att spara orderinformation i local storage
   saveOrderInfo() {
+    const orderInfo = {
 
-  const orderInfo = {
+      name: this.name,
+      email: this.email,
+      phone_number: this.phone_number,
+      pickup_time: this.pickup_time
 
-    name: this.name,
-    email: this.email,
-    phone_number: this.phone_number,
-    pickup_time: this.pickup_time
+    };
 
-  };
+    localStorage.setItem(
+      "orderInfo",
+      JSON.stringify(orderInfo)
+    );
 
-  localStorage.setItem(
-    "orderInfo",
-    JSON.stringify(orderInfo)
-  );
-
-}
+  }
 }

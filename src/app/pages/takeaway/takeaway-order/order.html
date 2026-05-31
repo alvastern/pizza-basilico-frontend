@@ -1,8 +1,10 @@
+<!--Sektion för att beställa takeaway-->
 <section id="takeaway-order">
     <app-header></app-header>
 
     <h2 class="fade-up">Beställ takeaway</h2>
 
+    <!--Formulär för att genomföra en beställning-->
     <form class="fade-up">
         <div class="input">
             <label for="namn">För- och efternamn: </label>
@@ -44,6 +46,7 @@
     </form>
 </section>
 
+<!--Sektion för att visa meny och varukorg-->
 <section id="sektion-order" class="scroll-fade">
     <article id="meny-sektion">
         <div *ngFor="let pizza of pizzas" id="meny-kort">
@@ -58,6 +61,7 @@
         </div>
     </article>
 
+    <!--Varukorg-->
     <article id="varukorg">
         <h3>Din varukorg</h3>
 

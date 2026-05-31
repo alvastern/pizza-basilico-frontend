@@ -26,31 +26,32 @@ export class BokaBordInfo {
     private router: Router
   ) {}
 
+  // Funktion för att boka bord
   bookTable() {
+    const bookingData = {
+      name: this.name,
+      email: this.email,
+      phone_number: this.phoneNumber,
+      guest_number: this.guestNumber,
+      booking_date: this.bookingDate,
+      booking_time: this.bookingTime
+    };
 
-  const bookingData = {
-    name: this.name,
-    email: this.email,
-    phone_number: this.phoneNumber,
-    guest_number: this.guestNumber,
-    booking_date: this.bookingDate,
-    booking_time: this.bookingTime
-  };
+    // Skickar bokningsdatan till backend och hanterar svaret
+    this.http.post(
+        'http://localhost:3000/table-bookings',
+        bookingData
+      ).subscribe({
 
-  this.http.post(
-      'http://localhost:3000/table-bookings',
-      bookingData
-    ).subscribe({
+        next: () => {
+          this.router.navigateByUrl('/boka-bord/tack');
+        },
 
-      next: () => {
-        this.router.navigateByUrl('/boka-bord/tack');
-      },
+        error: () => {
+          alert('Något gick fel');
+        }
 
-      error: () => {
-        alert('Något gick fel');
-      }
-
-    });
+      });
 
   }
 }

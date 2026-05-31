@@ -26,6 +26,7 @@ export class Register {
     private cdr: ChangeDetectorRef
   ) {}
 
+  // Funktion för att registrera en ny användare till admin
   registerUser() {
     this.errorMessage = '';
     this.successMessage = '';
@@ -57,11 +58,8 @@ export class Register {
 
     this.errorMessage = '';
 
-    const userData = {
-      email: this.email,
-      password: this.password
-
-    };
+    // Skapa ett objekt med användarens data
+    const userData = {email: this.email, password: this.password};
 
     this.http.post(
       'http://localhost:3000/auth/register',
@@ -71,6 +69,7 @@ export class Register {
       next: (response) => {
         this.successMessage = 'Konto har skapats!';
 
+        // Kort fördröjning innan användaren skickas till inloggning
         setTimeout(() => {
           this.router.navigateByUrl('/admin/login');
         }, 1500);
