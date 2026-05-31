@@ -1,0 +1,88 @@
+#login-wrapper {
+    background-image: url('/images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    width: 98.8vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 40ch;
+    padding: 4rem 2rem;
+    border-radius: 0.25rem;
+    margin: auto;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 800;
+}
+
+form {
+    text-align: center;
+    margin: 2rem 0 0 0;
+}
+
+input {
+    padding: 1.5vh 1.5vw;
+    border: none;
+    width: 35ch;
+    max-width: 350px;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+}
+
+button {
+    padding: 1rem 2rem;
+    background-color:#7a0d0d;
+    color: white;
+    border: none;
+    margin: 1rem 0 2rem 0;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #6c1313;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(122, 13, 13, 0.35);
+}
+
+p {
+    text-align: center;
+    width: 35ch;
+    display: block;
+    margin: 1rem auto 0 auto;
+
+    a {
+        color: white;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 1024px) {
+    #login-card {
+        width: 70vw;
+    }
+
+    p {
+        width: 60vw;
+    }
+
+    input {
+        width: 50vw;
+    }
+}

@@ -1,0 +1,162 @@
+#boka-bord-sektion {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
+    url(/images/tables.jpg);
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 10vh;
+}
+
+#boka-bord-sektion h2 {
+    margin: 0 0 0 5vw;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+form {
+    margin: 5vh 0 10vh 5vw;
+
+    div {
+        margin-bottom: 3vh;
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+
+        #namn, #nummer, #booking-date, #e-post {
+            padding: 1vh 0.5vw;
+            width: 35ch;
+        }
+
+        select {
+            padding: 1vh 0.5vw;
+            width: 20vh;
+        }
+    }
+}
+
+#booking-date {
+    padding: 1vh 0.5vw;
+    width: 33.5ch;
+}
+
+#knapp-fortsatt {
+    background-color:#7a0d0d;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    font-weight: 700;
+    font-size: 1.25rem;
+    border: none;
+    margin: 0 5ch 0 5vw;
+    cursor: pointer;
+    width: 20ch;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+#knapp-avbryt {
+    padding: 1.5vh 1.5vw;
+    border-radius: 1.5rem;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    width: 15ch;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+#knapp-fortsatt:hover, #knapp-avbryt:hover {
+    background-color: #6c1313;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(122, 13, 13, 0.35);
+}
+
+// Animationer
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scroll-fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    #boka-bord-sektion {
+        height: auto;
+        padding-bottom: 7.5vh;
+        background-position: center;
+    }
+
+    #boka-bord-sektion h2 {
+        font-size: 2.5rem;
+        width: 80%;
+        margin: 0 0 0 5vw;
+    }
+
+    form div label {
+        font-size: 1rem;
+    }
+
+    form div select {
+        width: 50%;
+        padding: 1vh 1vw;
+    }
+
+    form div #namn, form div #nummer, form div #e-post, form div #booking-date {
+        width: 50%;
+        padding: 1vh 1vw;
+    }
+
+    #booking-date {
+        width: 47.5%;
+        padding: 1vh 1vw;
+    }
+
+    #knapp-sektion {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin: 0 5vw;
+    }
+
+    #knapp-fortsatt {
+        width: 20ch;
+        padding: 2vh 2vw;
+        margin: 0;
+    }
+
+    #knapp-avbryt {
+        width: 15ch;
+        padding: 1.5vh 1.5vw;
+    }
+
+    #knappar-boka {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 5vw;
+        gap: 4ch;
+    }
+}

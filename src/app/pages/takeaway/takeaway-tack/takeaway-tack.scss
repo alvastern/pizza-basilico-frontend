@@ -1,0 +1,88 @@
+#takeaway-tack {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
+    url(/images/pizza-box.jpg);
+
+    height: 100vh;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#takeaway-tack h2 {
+    font-size: 4rem;
+    width: 35vw;
+    margin: 2.5vh 0 0 5vw;
+    font-weight: 800;
+}
+
+#takeaway-tack p {
+    margin: 5vh 0 0 5vw;
+}
+
+#takeaway-tack button {
+    margin: 5vh 0 5vh 5vw;
+    font-size: 1.15rem;
+    border: none;
+    padding: 2vh 2vw;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 3rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#takeaway-tack button:hover {
+    background-color: gray;
+}
+
+// Animationer
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scroll-fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    #takeaway-tack {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 10vh;
+        background-position: center;
+    }
+
+    #takeaway-tack h2 {
+        font-size: 3rem;
+        width: 80%;
+        margin: 2.5vh 0 0 5vw;
+    }
+
+    #takeaway-tack p {
+        width: 80%;
+    }
+
+    #takeaway-tack button {
+        width: 25ch;
+        min-width: 220px;
+        padding: 2.5vh 2vw;
+        margin: 7.5vh 0 0 5vw;
+    }
+}

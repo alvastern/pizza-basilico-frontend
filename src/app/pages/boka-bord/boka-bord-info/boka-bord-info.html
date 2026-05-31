@@ -1,0 +1,59 @@
+<!--Sektion för att boka bord-->
+<section id="boka-bord-sektion">
+    <app-header></app-header>
+    <div class="fade-up">
+        <h2>Boka bord</h2>
+
+        <!--Formulär för att boka bord-->
+        <form>
+            <div>
+                <label for="namn">För- och efternamn: </label>
+                <input type="text" id="namn" [(ngModel)]="name" name="name">
+            </div>
+
+            <div>
+                <label for="e-post">E-postadress: </label>
+                <input type="text" id="e-post" [(ngModel)]="email" name="email">
+            </div>
+
+            <div>
+                <label for="nummer">Telefonnummer: </label>
+                <input type="text" id="nummer" [(ngModel)]="phoneNumber" name="phoneNumber">
+            </div>
+
+            <div>
+                <label for="booking-date">Vilket datum vill du boka? </label>
+                <input type="date" [(ngModel)]="bookingDate" name="bookingDate" id="booking-date"/>
+            </div>
+
+            <div>
+                <label for="guests">Hur många är ni? </label>
+                <select id="guests" [(ngModel)]="guestNumber" name="guestNumber">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="time">Vilken tid vill ni äta? </label>
+                <select id="time" [(ngModel)]="bookingTime" name="bookingTime">
+                    <option>17:00</option>
+                    <option>18:00</option>
+                    <option>19:00</option>
+                    <option>20:00</option>
+                    <option>21:00</option>
+                </select>
+            </div>
+        </form>
+
+        <!--Knappar för att genomföra eller avbryta bokningen-->
+        <article id="knappar-boka">
+            <button (click)="bookTable()" id="knapp-fortsatt">Boka bord</button>
+            <button routerLink="/" id="knapp-avbryt">Avbryt</button>
+        </article>
+    </div>
+</section>

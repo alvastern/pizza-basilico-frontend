@@ -1,0 +1,17 @@
+<!--Sektion för att registrera ett konto-->
+<section id="register-wrapper">
+    <div id="register-card">
+        <h1>Registrera ett konto</h1>
+
+        <form>
+            <input type="email" placeholder="E-postadress" [(ngModel)]="email" name="email">
+            <input type="password" placeholder="Lösenord" [(ngModel)]="password" name="password">
+            <input type="password" placeholder="Bekräfta lösenord" [(ngModel)]="confirmPassword" name="confirmPassword">
+
+            <p *ngIf="errorMessage">{{ errorMessage }}</p>
+            <p *ngIf="successMessage">{{ successMessage }}</p>
+
+            <button type="button" (click)="registerUser()">Skapa konto</button>
+        </form>
+    </div>
+</section>

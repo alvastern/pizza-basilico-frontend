@@ -1,0 +1,32 @@
+<!--Betalningssida för takeaway-->
+<section>
+    <div id="hero-wrapper">
+        <app-header></app-header>
+        <div class="fade-up">
+            <h2>Beställ takeaway</h2>
+
+            <article id="dina-produkter">
+                <h3>Dina produkter</h3>
+
+                <div *ngFor="let pizza of cart">
+                    <p>{{ pizza.quantity }}x {{ pizza.title }}</p>
+                </div>
+
+                <p>Totalt: {{ getTotal() }} kr</p>
+
+                <button routerLink="/takeaway" id="andra-knapp">Ändra beställning</button>
+            </article>
+        </div>
+    </div>
+
+    <!--Välja betalningsmetod + genomför betalning-->
+    <article class="fade-up">
+        <h3 id="betalning-rubrik">Betalningsalternativ</h3>
+
+        <button class="betalning-knapp">Swisch</button>
+        <button class="betalning-knapp">Apple Pay</button>
+        <button class="betalning-knapp">Kortbetalaning</button>
+
+        <button id="skicka-knapp" (click)="placeOrder()">Betala</button>
+    </article>
+</section>

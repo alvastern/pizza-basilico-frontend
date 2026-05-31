@@ -1,0 +1,23 @@
+#ikon {
+    width: 5rem;
+    height: auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5vh 5vw;
+    color: white;
+    background-color: black;
+
+    button {
+        font-size: 1rem;
+        font-weight: 700;
+        background: none;
+        border: none;
+        color: white;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,493 @@
+h1 {
+    margin: 10vh 5vw;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+// Hantering av bordsbokningar
+#booking-system {
+    display: grid;
+    grid-template-columns: 25ch 1fr;
+    gap: 2rem;
+    margin: 3rem 5vw;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    background:
+    linear-gradient(
+        135deg,
+        #1f1f1f,
+        #7a0d0d
+    );
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    #booking-list h2 {
+        color: white;
+        margin: 0 0 2rem 0;
+    }
+}
+
+#select-date {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.booking-card {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    cursor: grab;
+    transition: 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    p {
+        margin: 0.25rem 0;
+    }
+}
+
+.table-card.available {
+    border: 2px solid #2e7d32;
+}
+
+.table-card.occupied {
+    border: 2px solid #c62828;
+}
+
+#tables-wrapper {
+    flex: 1;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.table-card {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: white;
+
+    p {
+        margin: 0.5rem;
+    }
+}
+
+// Hantering av takeaway-beställningar
+#takeaway-section {
+    margin: 10vh 5vw 0 5vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.25rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background:
+    linear-gradient(
+        135deg,
+        #1f1f1f,
+        #7a0d0d
+    );
+
+    h2 {
+        margin: 0 0 2rem 0;
+        color: white;
+        font-weight: 800;
+    }
+}
+
+.takeaway-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.2s ease;
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    p {
+        margin: 0.5rem 0;
+    }
+}
+
+.pickup-time {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.takeaway-card button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: #2e7d32;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+    &:hover {
+        background: #1b5e20;
+        transform: scale(1.02);
+    }
+}
+
+// Redigering av meny & textparagrafer
+#menu-admin-content, #about-admin-content {
+    background-color: #f7f7f7;
+    padding: 2rem;
+    margin: 0 5vw 0 5vw;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#menu-admin-section {
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+#menu-admin-header, #about-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    margin: 10vh 5vw 0 5vw;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: 0.2s ease;
+    background:
+    linear-gradient(
+        135deg,
+        #000000,
+        #7a0d0d
+    );
+
+    h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    span {
+        font-size: 2rem;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+}
+
+#menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.menu-card {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background:
+    linear-gradient(
+        135deg,
+        #000000,
+        #6b0f0f
+    );
+
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: 0.2s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+}
+
+.menu-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.menu-info {
+    flex: 1;
+
+    h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    span {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+}
+
+.menu-card img {
+    width: 7.5rem;
+    height: height;
+    object-fit: cover;
+    border-radius: 0 1rem 0 1rem;
+}
+
+.menu-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.edit-button,
+.delete-button {
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    transform: scale(1.15);
+}
+
+.add-pizza-card {
+    width: 75%;
+    height: 9.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px dashed #7a0d0d;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    span {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        border-color: #7a0d0d;
+    }
+}
+
+.about-card {
+    background: white;
+    border-radius: 0.25rem;
+    margin: 1.5rem 0;
+    padding: 1rem 2rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
+    h3 {
+        margin: 0.5rem 0 1rem 0;
+        font-size: 1.5rem;
+    }
+
+    textarea {
+        width: 30%;
+        height: 15ch;
+        padding: 1rem;
+        border: 1px solid black;
+    }
+
+    button {
+        padding: 0.75rem 1.75rem;
+        border: none;
+        background-color: #7a0d0d;
+        color: white;
+        margin: 1rem 0 0 0;
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+}
+
+.edit-row {
+    align-items: flex-start;
+}
+
+.about-card div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    background-color: #f7f7f7;
+    border-left: 4px solid #7a0d0d;
+    border-radius: 0.25rem;
+}
+
+.about-card div input[type="time"] {
+    width: 7rem;
+}
+
+.about-card div:hover {
+    background-color: #efefef;
+}
+
+.about-card input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    transition: 0.2s ease;
+    &:focus {
+        outline: none;
+        border-color: #7a0d0d;
+        box-shadow: 0 0 0 2px rgba(122,13,13,0.15);
+    }
+}
+
+#spara-tider-knapp, .spara-knapp {
+    margin-top: 1rem;
+    margin-left: 0;
+    background-color: #7a0d0d;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(122,13,13,0.3);
+    }
+}
+
+.about-card textarea {
+    width: 30%;
+    display: block;
+}
+
+#menu-form-section h3 {
+    margin: 3rem 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+#menu-form-section button {
+    padding: 0.75rem 1.5rem;
+    margin: 1.5rem 0 0 0;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: #7a0d0d;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(122,13,13,0.3);
+    }
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem 0;
+
+    label {
+        font-weight: 600;
+    }
+
+    input, textarea{
+        padding: 0.5rem;
+        width: 20%;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    h1 {
+        font-size: 2rem;
+        margin: 6vh 5vw;
+    }
+
+    #booking-system {
+        grid-template-columns: 1fr;
+    }
+
+    .table-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .add-pizza-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .about-card textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .edit-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .edit-row button {
+        margin: 0;
+        width: fit-content;
+    }
+
+    .about-card div {
+        flex-wrap: wrap;
+    }
+
+    .about-card div input:first-child {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #spara-tider-knapp {
+        margin-left: 0;
+    }
+
+    .about-card button {
+        margin: 1rem 0 0 0;
+        display: block;
+    }
+
+    #menu-form-section button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .input-group input, .input-group textarea {
+        width: 100%;
+    }
+}

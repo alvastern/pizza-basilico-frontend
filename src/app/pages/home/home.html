@@ -1,0 +1,60 @@
+<!--Startsida för webbplatsen-->
+<section id="introduktion">
+    <app-header></app-header>
+
+    <div class="intro-content" class="fade-up">
+        <h2 id="intro-rubrik">Välkommen till Pizza Basilico</h2>
+        <p class="paragraf">{{ homeText }}</p>
+
+        <article id="knappar-startsida">
+            <button routerLink="/boka-bord" class="knapp-startsida">Boka bord</button>
+            <button routerLink="/takeaway" class="knapp-startsida">Takeaway</button>
+        </article>
+    </div>
+</section>
+
+<!--Visar restaurangens meny-->
+<section>
+    <h2 id="meny-rubrik">Vår meny</h2>
+
+    <article id="meny-sektion" class="scroll-fade">
+        <div *ngFor="let pizza of pizzas" class="meny-kort">
+            <article class="meny-info">
+                <h2>{{ pizza.title }}</h2>
+                <p>{{ pizza.description }}</p>
+                <span>{{ pizza.price }} kr</span>
+            </article>
+
+            <img [src]="'/images/meny/' + pizza.image" class="meny-image">
+        </div>
+    </article>
+</section>
+
+<!--Sektion som handlar om företaget + öppettider-->
+<section id="about-sektion">
+    <div class="scroll-fade">
+        <h2>Om oss</h2>
+        <p class="paragraf-about">{{ aboutText }}</p>
+
+        <article id="sektion-öppentider">
+            <h3 id="rubrik-öppentider">Öppentider</h3>
+
+            <div *ngFor="let day of openingHours">
+                <p *ngIf="!day.is_closed">
+                    {{ day.weekday }}:
+                    {{ day.open_time?.slice(0,5) }} - {{ day.close_time?.slice(0,5) }}
+                </p>
+
+                <p *ngIf="day.is_closed">
+                    {{ day.weekday }}: Stängt
+                </p>
+            </div>
+        </article>
+    </div>
+
+    <picture class="scroll-fade">
+        <source srcset="images/vedugn.webp" type="image/webp">
+        <source srcset="images/vedugn.jpg" type="image/jpg">
+        <img src="images/vedugn.jpg" alt="En pizza som ligger framför en vedugn" id="vedugn-image">
+    </picture>
+</section>
