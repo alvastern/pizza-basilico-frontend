@@ -11,6 +11,7 @@ import { Footer } from './components/footer/footer';
   styleUrl: './app.scss'
 })
 
+// Huvudkomponenten för applikationen, innehåller header, footer och router-outelet
 export class App {
   protected readonly title = signal('pizza-basilico-frontend');
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+// Komponent för footer
 @Component({
   selector: 'app-footer',
   imports: [],

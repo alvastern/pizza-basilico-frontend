@@ -1,3 +1,4 @@
+// Styling för tack-sidan efter bokat bord
 #bord-tack-sektion {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
     url(/images/tables.jpg);
@@ -62,6 +63,7 @@
     transform: translateY(0);
 }
 
+// Responsiv design
 @media (max-width: 1024px) {
     #rubrik-tack {
         font-size: 3rem;

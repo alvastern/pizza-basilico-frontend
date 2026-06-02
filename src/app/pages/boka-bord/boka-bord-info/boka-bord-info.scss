@@ -1,3 +1,4 @@
+// Styling för sidan med bordsbokning
 #boka-bord-sektion {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
     url(/images/tables.jpg);
@@ -103,6 +104,7 @@ form {
     transform: translateY(0);
 }
 
+// Responsiv design
 @media (max-width: 1024px) {
     #boka-bord-sektion {
         height: auto;
