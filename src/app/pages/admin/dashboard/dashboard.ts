@@ -155,7 +155,15 @@ export class Dashboard implements OnInit {
 
     // Funktion som hämtar takeaway-beställningar
     getTakeawayOrders() {
-      this.http.get<TakeawayOrder[]>('http://localhost:3000/takeaway').subscribe({
+      const token = localStorage.getItem("token");
+
+      this.http.get<TakeawayOrder[]>(
+        'http://localhost:3000/takeaway',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).subscribe({
 
       next: (response) => {
         this.takeawayOrders = [...response];
@@ -171,13 +179,23 @@ export class Dashboard implements OnInit {
 
   // Funktion som markerar en färdig beställning
   completeOrder(orderId: number) {
-      this.http.put(`http://localhost:3000/takeaway/complete/${orderId}`, {}).subscribe({next: () => {
-        this.getTakeawayOrders();
-      },
+    const token = localStorage.getItem("token");
 
-      error: (error) => {
-        console.log(error);
+    this.http.put(
+      `http://localhost:3000/takeaway/complete/${orderId}`, {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
+    ).subscribe({next: () => {
+          this.getTakeawayOrders();
+          alert("Beställning färdig!");
+        },
+
+        error: (error) => {
+          console.log(error);
+        }
     });
   }
 
@@ -238,6 +256,7 @@ export class Dashboard implements OnInit {
         next: () => {
           this.getMenuItems();
           this.showMenuForm = false;
+          alert("Menyn uppdaterades!");
         },
 
         error: (error) => {
@@ -260,6 +279,7 @@ export class Dashboard implements OnInit {
         next: () => {
           this.getMenuItems();
           this.showMenuForm = false;
+          alert("Pizzan lades till!");
         },
 
         error: (error) => {
@@ -282,6 +302,7 @@ export class Dashboard implements OnInit {
     this.http.delete(`http://localhost:3000/menu/${itemId}`, { headers }).subscribe({
       next: () => {
         this.getMenuItems();
+        alert("Pizzan togs bort!");
       },
 
       error: (error) => {
