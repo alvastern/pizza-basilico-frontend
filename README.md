@@ -1,59 +1,29 @@
-# PizzaBasilicoFrontend
+# 🍕 Pizza Basilico
+Detta är en projektuppgift i kursen backend-baserad webbutveckling som har gått ut på att jag som student ska skapa en webbapplikation för ett fiktivt företag som säljer mat. Webbapplikationen ska kommunicera med en webbtjänst som jag själv har skapat.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+Denna webbplats är framtagen med ramverket Angular och har använt scss/sass för styling. Webbapplikationen är uppdelad i två delar, en vy för kunder och en vy för medarbetare på restaurangen. 
 
-## Development server
+### Funktioner för kunder
+- Se restaurangens meny
+- Boka bord
+- Beställa takeaway
+- Läsa på om restaurangen
 
-To start a local development server, run:
+### Funktioner för medarbetare
+- Redigera produkter i menyn
+- Lägga till produkter i menyn
+- Justera öppettiderna
+- Ändra innehållet i texterna om företaget
+- Se bordsbokningar för olika dagar
+- Se dagens takeaway-beställningar
 
-```bash
-ng serve
-```
+## Tekniker
+- Angular som ramverk
+- HTML
+- TypeScript
+- SCSS/SASS
+- JSON Web Tokens
+- REST API
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Autentisering och säkerhet
+För att medarbetare ska komma åt funktionerna för att redigera innehållet på webbplatsen behöver de skapa ett konto och logga in. För detta har JSON Web Tokens använts för att verifiera användare och därmed ge dem åtkomst till de skyddade funktionerna.
