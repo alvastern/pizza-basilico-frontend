@@ -43,7 +43,7 @@ export class Login {
 
     // Skicka inloggningsdata till backen
     this.http.post<any>(
-      'http://localhost:3000/auth/login',
+      'https://pizza-basilico-api.onrender.com/auth/login',
       loginData
     ).subscribe({
 

@@ -62,7 +62,7 @@ export class Register {
     const userData = {email: this.email, password: this.password};
 
     this.http.post(
-      'http://localhost:3000/auth/register',
+      'https://pizza-basilico-api.onrender.com/auth/register',
       userData
     ).subscribe({
 

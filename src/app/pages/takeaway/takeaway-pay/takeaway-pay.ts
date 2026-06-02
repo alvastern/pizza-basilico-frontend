@@ -57,7 +57,7 @@ export class TakeawayPay {
   };
 
     // Skickar orderdata till backend och hanterar svaret
-    this.http.post('http://localhost:3000/takeaway', orderData).subscribe({next: () => {
+    this.http.post('https://pizza-basilico-api.onrender.com/takeaway', orderData).subscribe({next: () => {
         localStorage.removeItem("cart");
         localStorage.removeItem("orderInfo");
 
