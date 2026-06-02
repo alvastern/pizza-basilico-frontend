@@ -25,7 +25,7 @@ export class Home implements OnInit, AfterViewInit {
 
   // Hämtar data för meny, om oss-sektion, öppettider och startsidans textparagraf
   ngOnInit() {
-    this.http.get<any[]>("http://localhost:3000/menu")
+    this.http.get<any[]>("https://pizza-basilico-api.onrender.com/menu")
       .subscribe(data => {
 
         this.pizzas = data;
@@ -34,7 +34,7 @@ export class Home implements OnInit, AfterViewInit {
       });
 
     // Hämtar data för startsidans text + text om företaget
-    this.http.get<any[]>("http://localhost:3000/pages")
+    this.http.get<any[]>("https://pizza-basilico-api.onrender.com/pages")
       .subscribe(data => {
 
         const aboutPage = data.find(
@@ -52,7 +52,7 @@ export class Home implements OnInit, AfterViewInit {
       });
 
     // Hämmtar data för öppettider
-    this.http.get<any[]>("http://localhost:3000/opening-hours")
+    this.http.get<any[]>("https://pizza-basilico-api.onrender.com/opening-hours")
       .subscribe(data => {
 
         this.openingHours = data;

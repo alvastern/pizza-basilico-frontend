@@ -29,7 +29,7 @@ export class Order implements OnInit {
 
   // Hämtar data för meny och sparar varukorg i local storage
   ngOnInit() {
-    this.http.get<any[]>("http://localhost:3000/menu")
+    this.http.get<any[]>("https://pizza-basilico-api.onrender.com/menu")
       .subscribe(data => {
         this.pizzas = data;
         this.cdr.detectChanges();

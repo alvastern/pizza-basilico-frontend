@@ -39,7 +39,7 @@ export class BokaBordInfo {
 
     // Skickar bokningsdatan till backend och hanterar svaret
     this.http.post(
-        'http://localhost:3000/table-bookings',
+        'https://pizza-basilico-api.onrender.com/table-bookings',
         bookingData
       ).subscribe({
 

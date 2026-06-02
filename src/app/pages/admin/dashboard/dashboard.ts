@@ -84,7 +84,7 @@ export class Dashboard implements OnInit {
       table.booking = null;
     });
 
-    this.http.get<Booking[]>(`http://localhost:3000/table-bookings/date/${this.selectedDate}`).subscribe({
+    this.http.get<Booking[]>(`https://pizza-basilico-api.onrender.com/table-bookings/date/${this.selectedDate}`).subscribe({
 
       next: (response) => {
         this.bookings = [...response];
@@ -158,7 +158,7 @@ export class Dashboard implements OnInit {
       const token = localStorage.getItem("token");
 
       this.http.get<TakeawayOrder[]>(
-        'http://localhost:3000/takeaway',
+        'https://pizza-basilico-api.onrender.com/takeaway',
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -182,7 +182,7 @@ export class Dashboard implements OnInit {
     const token = localStorage.getItem("token");
 
     this.http.put(
-      `http://localhost:3000/takeaway/complete/${orderId}`, {},
+      `https://pizza-basilico-api.onrender.com/takeaway/complete/${orderId}`, {},
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -201,7 +201,7 @@ export class Dashboard implements OnInit {
 
   // Funktion som hämtar menyposter
   getMenuItems() {
-    this.http.get<any[]>('http://localhost:3000/menu').subscribe({
+    this.http.get<any[]>('https://pizza-basilico-api.onrender.com/menu').subscribe({
       next: (response) => {
         this.menuItems = response;
       },
@@ -243,7 +243,7 @@ export class Dashboard implements OnInit {
     const token = localStorage.getItem("token");
 
     if(this.selectedPizza) {
-      this.http.put(`http://localhost:3000/menu/${this.selectedPizza.item_id}`,
+      this.http.put(`https://pizza-basilico-api.onrender.com/menu/${this.selectedPizza.item_id}`,
       this.menuForm,
 
         {
@@ -266,7 +266,7 @@ export class Dashboard implements OnInit {
     }
 
     else {
-      this.http.post('http://localhost:3000/menu',
+      this.http.post('https://pizza-basilico-api.onrender.com/menu',
         this.menuForm,
 
         {
@@ -299,7 +299,7 @@ export class Dashboard implements OnInit {
       return;
     }
 
-    this.http.delete(`http://localhost:3000/menu/${itemId}`, { headers }).subscribe({
+    this.http.delete(`https://pizza-basilico-api.onrender.com/menu/${itemId}`, { headers }).subscribe({
       next: () => {
         this.getMenuItems();
         alert("Pizzan togs bort!");
@@ -313,7 +313,7 @@ export class Dashboard implements OnInit {
 
   // Funktion som hämtar textparagrafer om företaget
   getAboutText() {
-    this.http.get<any>('http://localhost:3000/pages/about').subscribe({
+    this.http.get<any>('https://pizza-basilico-api.onrender.com/pages/about').subscribe({
       next: (response) => {
         console.log("ABOUT:", response);
         this.aboutText = response.content;
@@ -323,7 +323,7 @@ export class Dashboard implements OnInit {
 
   // Funktion som hämtar restaurangens öppettider
   getOpeningHours() {
-    this.http.get<any[]>('http://localhost:3000/opening-hours').subscribe({
+    this.http.get<any[]>('https://pizza-basilico-api.onrender.com/opening-hours').subscribe({
 
       next: (response) => {
         this.openingHours = response.map(hour => ({
@@ -342,7 +342,7 @@ export class Dashboard implements OnInit {
 
   // Funktion som hämtar textparagrafen för startsidan
   getHomepageText() {
-    this.http.get<any>('http://localhost:3000/pages/homepage').subscribe({
+    this.http.get<any>('https://pizza-basilico-api.onrender.com/pages/homepage').subscribe({
       next: (response) => {
         console.log("HOMEPAGE:", response);
         this.homepageText = response.content;
@@ -354,7 +354,7 @@ export class Dashboard implements OnInit {
   saveAbout() {
     const token = localStorage.getItem("token");
 
-    this.http.put('http://localhost:3000/pages/1',
+    this.http.put('https://pizza-basilico-api.onrender.com/pages/1',
 
       {
         content: this.aboutText
@@ -385,7 +385,7 @@ export class Dashboard implements OnInit {
   saveHomepage() {
     const token = localStorage.getItem("token");
 
-    this.http.put('http://localhost:3000/pages/2',
+    this.http.put('https://pizza-basilico-api.onrender.com/pages/2',
 
       {
         content: this.homepageText
@@ -417,7 +417,7 @@ export class Dashboard implements OnInit {
     const token = localStorage.getItem("token");
 
     this.openingHours.forEach(hour => {
-      this.http.put(`http://localhost:3000/opening-hours/${hour.hours_id}`, hour,
+      this.http.put(`https://pizza-basilico-api.onrender.com/opening-hours/${hour.hours_id}`, hour,
 
         {
           headers: {
