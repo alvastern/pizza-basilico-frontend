@@ -1,3 +1,4 @@
+// Styling för order-sidan i flödet för takeaway
 #takeaway-order {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%),
     url(/images/pizza-box.jpg);
@@ -185,6 +186,7 @@ select {
     transform: translateY(0);
 }
 
+// Responsiv design
 @media (max-width: 1024px) {
     #takeaway-order {
         background-position: center;
